@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Album } from '../album.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-marketplace',
   templateUrl: './marketplace.component.html',
   styleUrls: ['./marketplace.component.css']
 })
-export class MarketplaceComponent implements OnInit {
+export class MarketplaceComponent {
 
-  constructor() { }
+constructor(private router: Router){}
+  albums: Album[];
 
-  ngOnInit() {
-  }
-
+  goToDetailPage(clickedAlbum: Album) {
+     this.router.navigate(['albums', clickedAlbum.id]);
+  };
 }
