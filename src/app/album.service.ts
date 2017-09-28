@@ -3,18 +3,30 @@ import { Album } from './album.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
+
 export class AlbumService {
   albums: FirebaseListObservable<any[]>;
+  cartAlbums: FirebaseListObservable<any[]>;
+
   constructor(private database: AngularFireDatabase) {
     this.albums = database.list('albums');
+    this.cartAlbums = database.list('cart');
   }
 
   getAlbums() {
    return this.albums;
   }
 
+  getCartAlbums() {
+   return this.cartAlbums;
+  }
+
   addAlbum(newAlbum: Album) {
    this.albums.push(newAlbum);
+  }
+
+ addAlbumToCart(newCartAlbum: Album) {
+  this.cartAlbums.push(newCartAlbum);
  }
 
   getAlbumById(albumId: string){

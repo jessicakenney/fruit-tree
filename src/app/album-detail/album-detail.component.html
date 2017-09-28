@@ -1,5 +1,6 @@
 <div>
-  <h3>{{(albumToDisplay | async).title}}</h3>
-  <h4>{{(albumToDisplay | async).artist}}</h4>
-  <p>{{(albumToDisplay | async).description}}</p>
+  <h3>{{(albumToDisplay ).title}}</h3>
+  <h4>{{(albumToDisplay ).artist}}</h4>
+  <p>{{(albumToDisplay ).description}}</p>
+  <button class="btn btn-primary" (click)="beginAddingToCart(albumToDisplay)">Add To Cart</button>
 </div>

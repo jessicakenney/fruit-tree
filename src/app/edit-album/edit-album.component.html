@@ -1,16 +1,22 @@
-<h4>Edit Album</h4>
+<div *ngIf = "!showEditForm" >
+  <button class="btn btn-info" (click)="toggleForm()">Edit</button>
+</div>
 
-<label>New Album Title:</label>
-<input [(ngModel)]="selectedAlbum.title">
-<br>
+<div *ngIf = "showEditForm" >
+  <h4>Edit Album</h4>
 
-<label>New Album Artist:</label>
-<input [(ngModel)]="selectedAlbum.artist">
-<br>
+  <label>New Album Title:</label>
+  <input [(ngModel)]="selectedAlbum.title">
+  <br>
 
-<label>New Album Description:</label>
-<input [(ngModel)]="selectedAlbum.description">
+  <label>New Album Artist:</label>
+  <input [(ngModel)]="selectedAlbum.artist">
+  <br>
 
-<button (click)="beginUpdatingAlbum(selectedAlbum)">Update</button>
-<hr>
-<button (click)="beginDeletingAlbum(selectedAlbum)">Delete</button>
+  <label>New Album Description:</label>
+  <input [(ngModel)]="selectedAlbum.description">
+
+  <button class="btn btn-primary" (click)="beginUpdatingAlbum(selectedAlbum)">Update</button>
+  <hr>
+  <button class="btn btn-primary" (click)="beginDeletingAlbum(selectedAlbum)">Delete</button>
+</div>
