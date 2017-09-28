@@ -1,0 +1,98 @@
+Do you need a service to access Firebase:
+
+Although, do note that we're not required to retrieve data from Firebase in a service. You can also retrieve data from a component directly, as depicted in the AngularFire2 Documentation.
+
+#-------------
+# new component and model 
+#-------------
+
+* created project.model.ts
+	-this gets imported into any components that use it.
+
+## Routes and Service:
+
+* Add new component and path to app.route.ts
+* Create project.service.ts
+	- *.service.ts will include AngularFireDatabse in constructor and
+	interface methods to get fireBase data
+
+example:
+<<<<<<<<<<<<<<<<
+export class AlbumService {
+  albums: FirebaseListObservable<any[]>;
+
+  constructor(private database: AngularFireDatabase) {
+    this.albums = database.list('albums');
+  }
+.
+.
+}
+>>>>>>>>>>>>>>>>>
+
+* Install firebase
+	- Edit tsconfig.json to include "types" firebase
+	- npm install promise-polyfill --save-exact
+* Create the api-keys.ts
+	- imported app.module.ts
+
+* Update app.module.ts with imports for fireBase:
+<<<<<<<<<<<<<<<<<<
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+export const firebaseConfig = {
+  apiKey: masterFirebaseConfig.apiKey,
+  authDomain: masterFirebaseConfig.authDomain,
+  databaseURL: masterFirebaseConfig.databaseURL,
+  storageBucket: masterFirebaseConfig.storageBucket
+};
+>>>>>>>>>>>>>>>>>
+* add to app.module.ts imports:
+AngularFireModule.initializeApp(firebaseConfig),
+AngularFireDatabaseModule
+>>>>>>>>>>>>>>>>>
+
+* Edit Firebase Database Rules for read/write ==> "true"
+* Create sample.json and import Data into fireBase
+
+* Add Service/Route/Provider junk to component <projects> and constructor as
+follows:
+>>>>>>>>
+import { Component, OnInit } from '@angular/core';
+import { Project } from '../project.model';
+import { Router } from '@angular/router';
+*import { ProjectsService } from '../projects.service';
+*import { FirebaseListObservable } from 'angularfire2/database';
+
+@Component({
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.css'],
+*  providers: [ProjectsService]
+})
+export class ProjectsComponent implements OnInit {
+*  projects: FirebaseListObservable<any[]>;
+
+*  constructor(private router: Router, private projectsService: ProjectsService) { }
+
+  ngOnInit() {
+*    this.projects = this.projectsService.getProjects();
+  }
+.
+.
+}
+<<<<<<<<<<<<<<
+#-------------------------
+# Save Data to Firebase:
+# Does your component need to talk to the database:
+# Create, New
+# Update(edit), Save
+# Delete
+#-------------------------
+
+- Imports the AlbumService at the top of the file.
+- Adds a providers property to the component's annotation.
+- Registers AlbumService in the providers array.
+- Declares a new instance of AlbumService in the constructor.
+
+	
