@@ -7,14 +7,15 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { routing } from './app.routing';
 import { AboutComponent } from './about/about.component';
-import { MarketplaceComponent } from './marketplace/marketplace.component';
-import { AlbumDetailComponent } from './album-detail/album-detail.component';
+// import { MarketplaceComponent } from './marketplace/marketplace.component';
+// import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AdminComponent } from './admin/admin.component';
-import { EditAlbumComponent } from './edit-album/edit-album.component';
-import { CartComponent } from './cart/cart.component';
+// import { EditAlbumComponent } from './edit-album/edit-album.component';
+// import { CartComponent } from './cart/cart.component';
+import { CommunityComponent } from './community/community.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -28,11 +29,12 @@ export const firebaseConfig = {
     AppComponent,
     WelcomeComponent,
     AboutComponent,
-    MarketplaceComponent,
-    AlbumDetailComponent,
+    // MarketplaceComponent,
+    // AlbumDetailComponent,
     AdminComponent,
-    EditAlbumComponent,
-    CartComponent
+    // EditAlbumComponent,
+    // CartComponent,
+    CommunityComponent
   ],
   imports: [
     BrowserModule,

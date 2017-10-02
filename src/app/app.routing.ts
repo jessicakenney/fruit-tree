@@ -2,10 +2,10 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
-import { MarketplaceComponent } from './marketplace/marketplace.component';
-import { AlbumDetailComponent }   from './album-detail/album-detail.component';
+// import { MarketplaceComponent } from './marketplace/marketplace.component';
+// import { AlbumDetailComponent }   from './album-detail/album-detail.component';
 import { AdminComponent }   from './admin/admin.component';
-import { CartComponent } from './cart/cart.component';
+// import { CartComponent } from './cart/cart.component';
 
 const appRoutes: Routes = [
   {
@@ -17,20 +17,8 @@ const appRoutes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'marketplace',
-    component: MarketplaceComponent
-  },
-  {
-    path: 'albums/:id',
-    component: AlbumDetailComponent
-  },
-  {
     path: 'admin',
     component: AdminComponent
-  },
-  {
-    path: 'cart',
-    component: CartComponent
   }
 ];
 
