@@ -1,6 +1,25 @@
+<h2> Hello! Login or Register here!</h2>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">New User Login </h3>
+    <h3 class="panel-title">Login</h3>
+  </div>
+  <div class="panel-body">
+<div>
+  <div>
+    <label>UserName:</label>
+    <br>
+    <input #loginname>
+  </div>
+  <button (click)="submitLoginForm(loginname.value); loginname.value=''">Enter</button>
+</div>
+</div>
+</div>
+
+<hr noshade>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Register New User</h3>
   </div>
   <div class="panel-body">
 <div>
@@ -12,7 +31,4 @@
   <button (click)="submitNewUserForm(username.value); username.value=''">Register</button>
 </div>
 </div>
-</div>
-<div>
-  <!-- <app-marketplace></app-marketplace> -->
 </div>

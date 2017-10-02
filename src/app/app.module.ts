@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 // import { EditAlbumComponent } from './edit-album/edit-album.component';
 // import { CartComponent } from './cart/cart.component';
 import { CommunityComponent } from './community/community.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -34,7 +35,8 @@ export const firebaseConfig = {
     AdminComponent,
     // EditAlbumComponent,
     // CartComponent,
-    CommunityComponent
+    CommunityComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

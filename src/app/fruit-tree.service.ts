@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 
 export class FruitTreeService {
   users: FirebaseListObservable<any[]>;
+  currentUser: FirebaseObjectObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
-    this.users = database.list('users')
+    this.users = database.list('users');
+    this.currentUser = database.object('currentUser');
     // this.trees = database.list('trees');
     // this.cartAlbums = database.list('cart');
   }
@@ -24,6 +26,16 @@ export class FruitTreeService {
   addUser(newUser: User) {
    this.users.push(newUser);
   }
+
+  createNewSession(username) {
+    console.log("SERVICE "+username);
+    this.currentUser.set(username).then(_ => console.log("FB set"));
+  }
+   getCurrentUser() {
+    return this.currentUser;
+   }
+
+
  //
  // addAlbumToCart(newCartAlbum: Album) {
  //  this.cartAlbums.push(newCartAlbum);
