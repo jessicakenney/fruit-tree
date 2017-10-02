@@ -1,0 +1,17 @@
+{ "trees": [{
+  "name": "Apple Tree",
+  "number": "400",
+  "street": "SW 6th Ave",
+  "zip": "97204"
+}, {
+  "name": "Apple Tree",
+  "number": "100",
+  "street": "SW 6th Ave",
+  "zip": "97204"
+},{
+"name": "Apple Tree",
+"number": "300",
+"street": "SW 6th Ave",
+"zip": "97204"
+  }]
+}

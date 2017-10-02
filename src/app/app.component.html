@@ -1,3 +1,3 @@
-<h1>
-  {{title}}
-</h1>
+<div class="well" *ngFor="let tree of trees | async">
+  <p>{{tree.name}}</p>
+</div>
