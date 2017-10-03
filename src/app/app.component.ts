@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { google } from 'googleapis';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.trees = this.database.list('trees');
     this.convertAddressToPin("400", "SW 6th Ave", "97204", this.latitude, this.longitude);
+    // this.initMap();
   }
 
   convertAddressToPin(number, street, zip, latitude, longitude) {
@@ -48,6 +50,26 @@ export class AppComponent implements OnInit {
     //
     // }
 
+  }
+
+  initMap() {
+    let locationArray = [];
+    let epicodus = {lat: 45.5206322, lng: -122.6773577};
+    locationArray.push(epicodus);
+    let notEpicodus = {lat: 45.5306322, lng: -122.6873577};
+    locationArray.push(notEpicodus);
+    let map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: epicodus
+    });
+    let marker = new google.maps.Marker({
+      position: locationArray[0],
+      map: map
+    });
+    let marker2 = new google.maps.Marker({
+      position: locationArray[1],
+      map: map
+    });
   }
 
 

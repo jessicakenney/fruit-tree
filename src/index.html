@@ -20,14 +20,21 @@
     <div id="map"></div>
     <script>
       function initMap() {
-          
-        var epicodus = {lat: 45.5206322, lng: -122.6773577};
-        var map = new google.maps.Map(document.getElementById('map'), {
+        let locationArray = [];
+        let epicodus = {lat: 45.5206322, lng: -122.6773577};
+        locationArray.push(epicodus);
+        let notEpicodus = {lat: 45.5306322, lng: -122.6873577};
+        locationArray.push(notEpicodus);
+        let map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: epicodus
         });
-        var marker = new google.maps.Marker({
-          position: epicodus,
+        let marker = new google.maps.Marker({
+          position: locationArray[0],
+          map: map
+        });
+        let marker2 = new google.maps.Marker({
+          position: locationArray[1],
           map: map
         });
       }

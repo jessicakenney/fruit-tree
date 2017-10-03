@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { google } from 'googleapis';
 
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,8 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    google
   ],
   providers: [],
   bootstrap: [AppComponent]
