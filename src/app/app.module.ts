@@ -15,7 +15,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 // import { AdminComponent } from './admin/admin.component';
 // import { EditAlbumComponent } from './edit-album/edit-album.component';
 // import { CartComponent } from './cart/cart.component';
-import { CommunityComponent } from './community/community.component';
+// import { CommunityComponent } from './community/community.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 
@@ -36,7 +36,7 @@ export const firebaseConfig = {
     // AdminComponent,
     // EditAlbumComponent,
     // CartComponent,
-    CommunityComponent,
+    // CommunityComponent,
     UserProfileComponent,
     LoginComponent
   ],

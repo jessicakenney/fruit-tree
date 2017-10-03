@@ -1,8 +1,8 @@
-<div *ngIf="currentUser">
+<div *ngIf="currentUserId">
     <h2>Welcome {{currentUser.username}} </h2>
     <button (click)="submitLogout(currentUser)">Logout</button>
 </div>
-<div *ngIf="!currentUser">
+<div *ngIf="!currentUserId">
   <h2>Welcome </h2>
   <div class="panel panel-default">
     <div class="panel-heading">

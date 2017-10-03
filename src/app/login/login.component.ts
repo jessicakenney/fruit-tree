@@ -1,22 +1,8 @@
-// import { Component, OnInit } from '@angular/core';
-//
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css']
-// })
-// export class LoginComponent implements OnInit {
-//
-//   constructor() { }
-//
-//   ngOnInit() {
-//   }
-//
-// }
 import { Component, OnInit, Output } from '@angular/core';
 import { FruitTreeService } from '../fruit-tree.service';
 import { User } from '../user.model';
 import { Tree } from '../tree.model';
+import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +12,9 @@ import { Tree } from '../tree.model';
 })
 
 export class LoginComponent implements OnInit {
+  //currentUserId: FirebaseObjectObservable<any[]>;
+  currentUserId;
   currentUser;
-
 
   constructor(private fruitTreeService: FruitTreeService) { }
 
@@ -35,27 +22,20 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm(loginName: string) {
-    //this.currentUser = loginName;
     console.log("submit login form "+loginName);
-    // ???? I cant do this ??Verify login name is in DB
-    this.currentUser = this.fruitTreeService.getUserByName(loginName);
-    // this.fruitTreeService.getUserByName(loginName).subscribe(dataLastEmittedFromObserver => {
-    //   this.currentUser = new User(dataLastEmittedFromObserver.username)
-    // })
-    console.log("Looked in firebase for user: "+this.currentUser.username);
-    //set new session loginName in DB if found
-    this.fruitTreeService.createNewSession(loginName);
+    this.currentUserId= this.fruitTreeService.getUserByName(loginName);
+    console.log("login userId "+this.currentUserId);
   }
 
 // New  User
   submitNewUserForm(username: string) {
     // create new user and add to DB
-    var newUser: User = new User(username);
+    var newUser: User = new User(username,'');
     this.fruitTreeService.addUser(newUser);
     console.log("Submit new userform "+username);
     // add to session
     this.currentUser = newUser;
-    this.fruitTreeService.createNewSession(newUser);
+    //this.fruitTreeService.createNewSession(newUser);
   }
 
   submitLogout(username: string) {

@@ -11,25 +11,29 @@ export class FruitTreeService {
   constructor(private database: AngularFireDatabase) {
     this.users = database.list('users');
     this.currentUser = database.object('currentUser');
-    // this.trees = database.list('trees');
-    // this.cartAlbums = database.list('cart');
+
   }
 
- //  getAlbums() {
- //   return this.albums;
- //  }
- //
- //  getCartAlbums() {
- //   return this.cartAlbums;
- //  }
- //
   addUser(newUser: User) {
+    //perry
+    //write the record
+    //get the reference to the top node "users"
+    //find the record you just wrote's key
+    //update the local object with they key as the id property
+    //update the object in the database
+    //now any time we retrieve the object, we can ignore the node. id is now property of object for forever.
+
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
+   var newPostKey = this.database.database.ref().child('users').push().key;
+
+   var updateUid = {};
+   updateUid ['/users/' + newPostKey] = { username : newUser.username, uid : newPostKey};
+   this.database.database.ref().update(updateUid)
   }
 
-  createNewSession(username) {
-    console.log("Service:createNewSession "+username);
-    this.currentUser.set(username).then(_ => console.log("FB set currentUser"));
+  createNewSession(userId: string) {
+    console.log("Service:createNewSession "+userId);
+    this.currentUser.set(userId).then(_ => console.log("FB set currentUserId"));
   }
 
   logoutSession(username) {
@@ -41,19 +45,27 @@ export class FruitTreeService {
     return this.currentUser;
   }
 
+  getUserById(userId: string){
+    return this.database.object('/users/' + userId);
+  }
 
   getUserByName(name: string){
-    let queryRef = this.database.list("users/", { query: { orderByChild: 'username', equalTo: name } });
-    //var queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name)
-    console.log("GetUserBy Name: fb "+queryRef);
-    return queryRef;
-    // .on("value", function(snapshot) {
-    //   console.log ("snapshot:" + snapshot.key);
-    //   return snapshot.key;
-    // });
-    //var temp = this.database.database.ref('users').orderByKey().equalTo("bob");
-    //console.log("GetUserBy Name: fb "+temp);
+    var queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name).on("child_added",function(snapshot) {
+      console.log ("snapshot:" + snapshot.key);
+      // console.log(snapshot.val().username);
+      //this.createNewSession(snapshot.key);
+   });
+   return "bob";
+
   }
+
+  //  getUserByNamePromise(name: string) {
+  //   return this.database.database.ref("users").orderByChild('username').equalTo(name).once('value').then(function(snapshot) {
+  //     console.log ("snapshot : "+ snapshot.key);
+  //     return snapshot.val();
+  //   });
+  // }
+
 
  //
  // addAlbumToCart(newCartAlbum: Album) {
