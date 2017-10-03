@@ -4,7 +4,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 // import { MarketplaceComponent } from './marketplace/marketplace.component';
 // import { AlbumDetailComponent }   from './album-detail/album-detail.component';
-import { AdminComponent }   from './admin/admin.component';
+import { LoginComponent }   from './login/login.component';
 import { UserProfileComponent }   from './user-profile/user-profile.component';
 import { AppComponent } from './app.component';
 
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'login',
-    component: AdminComponent
+    component: LoginComponent
   },
   {
     path: 'user-profile',

@@ -1,0 +1,40 @@
+<div *ngIf="currentUser">
+    <h2>Welcome {{currentUser.username}} </h2>
+    <button (click)="submitLogout(currentUser)">Logout</button>
+</div>
+<div *ngIf="!currentUser">
+  <h2>Welcome </h2>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Login</h3>
+    </div>
+    <div class="panel-body">
+  <div>
+    <div>
+      <label>UserName:</label>
+      <br>
+      <input #loginname>
+    </div>
+    <button (click)="submitLoginForm(loginname.value); loginname.value=''">Enter</button>
+  </div>
+  </div>
+  </div>
+
+  <hr noshade>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Register New User</h3>
+    </div>
+    <div class="panel-body">
+  <div>
+    <div>
+      <label>UserName:</label>
+      <br>
+      <input #username>
+    </div>
+    <button (click)="submitNewUserForm(username.value); username.value=''">Register</button>
+  </div>
+  </div>
+  </div>
+</div>

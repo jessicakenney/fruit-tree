@@ -23,16 +23,16 @@ export class UserProfileComponent  implements OnInit {
 
   // use subscribe
   ngOnInit() {
-    this.route.params.forEach((urlParameters) => {
-      // this.userId = urlParameters['id'];
-    });
+    // this.route.params.forEach((urlParameters) => {
+    //   // this.userId = urlParameters['id'];
+    // });
     this.currentUser = this.fruitTreeService.getCurrentUser();
     console.log ("IN USER PROFILE "+this.currentUser);
-    // this.fruitTreeService.getUserById(this.albumId).subscribe(dataLastEmittedFromObserver => {
-    // this.userToDisplay = new Album(dataLastEmittedFromObserver.title,
-    //                                   dataLastEmittedFromObserver.artist,
-    //                                   dataLastEmittedFromObserver.description)
-  // })
+  //   this.fruitTreeService.getCurrentUser().subscribe(dataLastEmittedFromObserver => {
+  //    this.currentUser = new Album(dataLastEmittedFromObserver.title,
+  //                                      dataLastEmittedFromObserver.artist,
+  //                                      dataLastEmittedFromObserver.description)
+  //  })
   }
 
 }

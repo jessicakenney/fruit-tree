@@ -24,26 +24,42 @@ export class FruitTreeService {
  //  }
  //
   addUser(newUser: User) {
-   this.users.push(newUser);
+   this.users.push(newUser).then(_ => console.log("FB pushed new user"));
   }
 
   createNewSession(username) {
-    console.log("SERVICE "+username);
-    this.currentUser.set(username).then(_ => console.log("FB set"));
+    console.log("Service:createNewSession "+username);
+    this.currentUser.set(username).then(_ => console.log("FB set currentUser"));
   }
-   getCurrentUser() {
-    return this.currentUser;
-   }
 
+  logoutSession(username) {
+    console.log("Service:logging out "+username);
+    this.currentUser.remove().then(_ => console.log("FB removed currentUser"));
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
+  }
+
+
+  getUserByName(name: string){
+    let queryRef = this.database.list("users/", { query: { orderByChild: 'username', equalTo: name } });
+    //var queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name)
+    console.log("GetUserBy Name: fb "+queryRef);
+    return queryRef;
+    // .on("value", function(snapshot) {
+    //   console.log ("snapshot:" + snapshot.key);
+    //   return snapshot.key;
+    // });
+    //var temp = this.database.database.ref('users').orderByKey().equalTo("bob");
+    //console.log("GetUserBy Name: fb "+temp);
+  }
 
  //
  // addAlbumToCart(newCartAlbum: Album) {
  //  this.cartAlbums.push(newCartAlbum);
  // }
  //
- //  getAlbumById(albumId: string){
- //    return this.database.object('albums/' + albumId);
- //  }
  //
  //  updateAlbum(localUpdatedAlbum){
  //    var albumEntryInFirebase = this.getAlbumById(localUpdatedAlbum.$key);

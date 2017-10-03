@@ -12,11 +12,12 @@ import { AboutComponent } from './about/about.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AdminComponent } from './admin/admin.component';
+// import { AdminComponent } from './admin/admin.component';
 // import { EditAlbumComponent } from './edit-album/edit-album.component';
 // import { CartComponent } from './cart/cart.component';
 import { CommunityComponent } from './community/community.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginComponent } from './login/login.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -32,11 +33,12 @@ export const firebaseConfig = {
     AboutComponent,
     // MarketplaceComponent,
     // AlbumDetailComponent,
-    AdminComponent,
+    // AdminComponent,
     // EditAlbumComponent,
     // CartComponent,
     CommunityComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
