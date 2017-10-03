@@ -7,6 +7,8 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent }   from './login/login.component';
 import { UserProfileComponent }   from './user-profile/user-profile.component';
 import { AppComponent } from './app.component';
+import { NewTreeComponent } from './new-tree/new-tree.component';
+import { AllTreesComponent } from './all-trees/all-trees.component';
 
 // import { CartComponent } from './cart/cart.component';
 
@@ -26,6 +28,14 @@ const appRoutes: Routes = [
   {
     path: 'user-profile',
     component: UserProfileComponent
+  },
+  {
+    path: 'new-tree',
+    component: NewTreeComponent
+  },
+  {
+    path: 'all-trees',
+    component: AllTreesComponent
   }
 ];
 

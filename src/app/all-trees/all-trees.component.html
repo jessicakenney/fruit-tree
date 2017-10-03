@@ -1,0 +1,12 @@
+<h2>All Trees</h2>
+
+<div *ngFor="let tree of trees | async" class="panel panel-default">
+  <div class="panel-body">
+  <li><ul>{{tree.title}}</ul>
+      <ul>{{tree.type}}</ul>
+      <ul>{{tree.ownerUsername}}</ul>
+      <ul>{{tree.street}}, {{tree.zip}}</ul>
+      <ul>{{tree.image}}</ul>
+      <ul>{{tree.notes}}</ul>
+  </div>
+</div>
