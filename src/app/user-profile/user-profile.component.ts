@@ -27,12 +27,13 @@ export class UserProfileComponent  implements OnInit {
     this.route.params.forEach((urlParameters) => {
        this.uid = urlParameters['uid'];
     });
-    //this.userToDisplay = this.fruitTreeService.getUserById(this.uid);
+    console.log("UserProfile uid >> "+ this.uid);
+    this.userToDisplay = this.fruitTreeService.getUserById(this.uid);
     //try use subscribe
-    this.fruitTreeService.getUserById(this.uid).subscribe(dataLastEmittedFromObserver => {
-    this.userToDisplay = new User (dataLastEmittedFromObserver.uid,dataLastEmittedFromObserver.email);
-    console.log(this.userToDisplay);
-  })
+    // this.fruitTreeService.getUserById(this.uid).subscribe(dataLastEmittedFromObserver => {
+    // this.userToDisplay = new User (dataLastEmittedFromObserver.uid,dataLastEmittedFromObserver.email);
+    console.log("UserProfile: userToDisplay: "+ this.userToDisplay);
+  // })
 }
 }
 

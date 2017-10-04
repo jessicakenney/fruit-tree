@@ -15,20 +15,7 @@ export class FruitTreeService {
   }
 
   addUser(newUser: User) {
-  //perry
-  //write the record
-  //get the reference to the top node "users"
-  //find the record you just wrote's key
-  //update the local object with they key as the id property
-  //update the object in the database
-  //now any time we retrieve the object, we can ignore the node. id is now property of object for forever.
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
-   //var newPostKey = this.database.database.ref().child('users').push().key;
-   //console.log("newUser Key "+newPostKey);
-
-   //var updateUid = {};
-   //updateUid ['/users/' + newPostKey] = { email : newUser.email, uid : newPostKey};
-   //this.database.database.ref().update(updateUid).then(_ => console.log("FB update"))
   }
 
   getCurrentUser() {
@@ -36,7 +23,8 @@ export class FruitTreeService {
   }
 
   getUserById(userId: string){
-    return this.database.object('/users/' + userId);
+    console.log("Service  >> looking for  user : "+userId);
+    return this.database.object('users/uid' + userId);
   }
 
   // getUserByName(name: string){
