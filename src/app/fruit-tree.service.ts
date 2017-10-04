@@ -23,8 +23,8 @@ export class FruitTreeService {
   //update the object in the database
   //now any time we retrieve the object, we can ignore the node. id is now property of object for forever.
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
-   var newPostKey = this.database.database.ref().child('users').push().key;
-   console.log("newUser Key "+newPostKey);
+   //var newPostKey = this.database.database.ref().child('users').push().key;
+   //console.log("newUser Key "+newPostKey);
 
    //var updateUid = {};
    //updateUid ['/users/' + newPostKey] = { email : newUser.email, uid : newPostKey};

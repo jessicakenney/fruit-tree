@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+  unsubscribe : any;
+  unsubscribeNew : any ;
 
   constructor(private router: Router, private fruitTreeService: FruitTreeService, private auth: AngularFireAuth) { }
 
@@ -33,10 +35,15 @@ export class LoginComponent implements OnInit {
     this.fruitTreeService.newSignIn(email,password);
     console.log("New SignInsubmitted:");
 
-    this.auth.auth.onAuthStateChanged(function(user) {
+    this.unsubscribeNew = this.auth.auth.onAuthStateChanged((user) =>{
       if (user) {
         // User is signed in.
-        console.log("user signed in "+user.email);
+        console.log("**NEW user signed in "+user.email);
+        console.log("**Adding to database "+user.email+" "+user.uid);
+        var newUser = new User(user.uid,user.email);
+        this.fruitTreeService.addUser(newUser);
+        //now switchto user page
+        this.router.navigate(['users',user.uid]);
       } else {
         // No user is signed in.
         console.log("no one signed in");
@@ -53,10 +60,10 @@ export class LoginComponent implements OnInit {
     console.log("Submit login form "+email);
     this.fruitTreeService.signIn(email,password);
     console.log("signIn submitted:");
-    this.auth.auth.onAuthStateChanged((user) => {
+    this.unsubscribe = this.auth.auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        console.log("user signed in "+user.email);
+        console.log("Existing user signed in "+user.email);
         this.router.navigate(['users',user.uid]);
       } else {
         // No user is signed in.
@@ -69,5 +76,9 @@ export class LoginComponent implements OnInit {
   submitLogout() {
     console.log("Logging out currentUser : ");
     this.auth.auth.signOut();
+    console.log("remove listeners : ");
+    // this.unsubscribe is not a function
+    //this.unsubscribe();
+    //this.unsubscribeNew();
   }
 }

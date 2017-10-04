@@ -30,7 +30,7 @@ export class UserProfileComponent  implements OnInit {
     //this.userToDisplay = this.fruitTreeService.getUserById(this.uid);
     //try use subscribe
     this.fruitTreeService.getUserById(this.uid).subscribe(dataLastEmittedFromObserver => {
-    this.userToDisplay = new User (dataLastEmittedFromObserver.email);
+    this.userToDisplay = new User (dataLastEmittedFromObserver.uid,dataLastEmittedFromObserver.email);
     console.log(this.userToDisplay);
   })
 }
