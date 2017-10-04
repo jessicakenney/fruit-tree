@@ -1,42 +1,62 @@
 <hr noshade>
-<h3>Add a New Tree!</h3>
-<hr noshade>
 <div class = "well">
-<div>
-  <div>
+  <h3><b>Add a New Tree!</b></h3>
+  <hr noshade>
+
+  <label for="nType">What Type of Tree:</label>
+  <select #newType id="newType" name ="type">
+    <option value="Almond">Almond</option>
+    <option value="Apple">Apple</option>
+    <option value="Apricot">Apricot</option>
+    <option value="Cherry">Cherry</option>
+    <option value="Chestnut">Chestnut</option>
+    <option value="Citrus">Citrus</option>
+    <option value="Crab Apple">Crab Apple</option>
+    <option value="Fig">Fig</option>
+    <option value="Grapefruit">Grapefruit</option>
+    <option value="Kumquat">Kumquat</option>
+    <option value="Lemon">Lemon</option>
+    <option value="Lime">Lime</option>
+    <option value="Mango">Mango</option>
+    <option value="Mulberry">Mulberry</option>
+    <option value="Olive">Olive</option>
+    <option value="Orange">Orange</option>
+    <option value="Peach">Peach</option>
+    <option value="Pear">Pear</option>
+    <option value="Pecan">Pecan</option>
+    <option value="Persimmon">Persimmon</option>
+    <option value="Plum">Plum</option>
+    <option value="Pomelo">Pomelo</option>
+    <option value="Walnut">Walnut</option>
+    <option value="Other">Other...</option>
+  </select>
+
+  <div class="form-group">
     <label>Species of Your Tree:</label>
     <br>
-    <input #newSpecies>
+    <input #newSpecies class="form-control">
   </div>
-  <div>
-    <label>What Type of Tree:</label>
-    <br>
-    <input #newType>
-  </div>
-  <div>
+
+    <div class="form-group">
     <label>Tree's Street Location:</label>
     <br>
-    <textarea #newStreet></textarea>
-  </div>
-  <div>
+    <textarea #newStreet class="form-control"></textarea>
+    </div>
+
     <label>Tree Zipcode:</label>
     <br>
-    <textarea #newZip></textarea>
-  </div>
-  <div>
+    <input #newZip class="form-control">
     <label>Notes:</label>
     <br>
-    <textarea #newNotes></textarea>
-  </div>
-  <div>
+    <textarea #newNotes class="form-control"></textarea>
     <label>Tree Image:</label>
     <br>
-    <textarea #newImage></textarea>
-    <div>
+    <textarea #newImage class="form-control"></textarea>
       <label>Tree's Owner:</label>
       <br>
-      <textarea #newownerUsername></textarea>
-    </div>
-  </div>
-</div>
+      <input #newownerUsername class="form-control">
+    <br>
+    <img src="/src/public/img/tinyapple.png" height="35px" width="30px">
+  <button class="btn btn-success" (click)="submitTreeForm(newType.value, newSpecies.value, newStreet.value, newZip.value, newNotes.value, newImage.value, newownerUsername.value); newType.value=''; newStreet.value=''; newZip.value=''; newNotes.value=''; newImage.value=''; newownerUsername.value=''">Add</button>
+<img src="/src/public/img/tinyapple.png" height="35px" width="30px">
 </div>

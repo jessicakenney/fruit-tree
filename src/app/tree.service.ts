@@ -13,4 +13,8 @@ export class TreeService {
     getTrees(){
       return this.trees;
     }
+
+    addTree(newTree: Tree) {
+      this.trees.push(newTree);
+    }
   }

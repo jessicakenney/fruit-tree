@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'Share the Harvest';
+  title = 'Fruit Forward';
 }
 
 // import { Component, OnInit, Output } from '@angular/core';
