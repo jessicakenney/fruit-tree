@@ -12,10 +12,12 @@ import { Tree } from '../tree.model';
 })
 export class AllTreesComponent implements OnInit {
   trees: FirebaseListObservable<any[]>;
+  treeCoordinates = [];
   constructor(private router: Router, private treeService: TreeService) { }
 
   ngOnInit() {
     this.trees = this.treeService.getTrees();
+    this.treeService.getTreeCoordinates(this.treeCoordinates);
   }
 
 }
