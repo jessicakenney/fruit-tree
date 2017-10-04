@@ -24,7 +24,7 @@ export class FruitTreeService {
 
   getUserById(userId: string){
     console.log("Service  >> looking for  user : "+userId);
-    return this.database.object('users/uid' + userId);
+    return this.database.object('users/' + userId);
   }
 
   // getUserByName(name: string){
@@ -62,24 +62,5 @@ export class FruitTreeService {
       console.log(error);
       });
   }
-
-
- //
- // addAlbumToCart(newCartAlbum: Album) {
- //  this.cartAlbums.push(newCartAlbum);
- // }
- //
- //
- //  updateAlbum(localUpdatedAlbum){
- //    var albumEntryInFirebase = this.getAlbumById(localUpdatedAlbum.$key);
- //    albumEntryInFirebase.update({title: localUpdatedAlbum.title,
- //                                artist: localUpdatedAlbum.artist,
- //                                description: localUpdatedAlbum.description});
- //  }
- //
- //  deleteAlbum(AlbumToDelete){
- //    var albumEntryInFirebase = this.getAlbumById(AlbumToDelete.$key);
- //    albumEntryInFirebase.remove();
- //  }
 
 }

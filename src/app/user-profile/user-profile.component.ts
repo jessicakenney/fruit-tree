@@ -5,6 +5,7 @@ import { Tree } from '../tree.model';
 import { User } from '../user.model';
 import { FruitTreeService } from '../fruit-tree.service';
 import { FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase  } from 'angularfire2/database';
 
 
 @Component({
@@ -16,30 +17,20 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
 
 export class UserProfileComponent  implements OnInit {
   uid: string = null;
+  homies: string;
   userToDisplay;
 
   constructor(private route: ActivatedRoute,
-              private fruitTreeService: FruitTreeService, private location: Location) {
+              private fruitTreeService: FruitTreeService, private location: Location,private database: AngularFireDatabase,) {
   }
 
-  // use subscribe
+  // use subscribe ?
   ngOnInit() {
     this.route.params.forEach((urlParameters) => {
        this.uid = urlParameters['uid'];
     });
-    console.log("UserProfile uid >> "+ this.uid);
-    this.userToDisplay = this.fruitTreeService.getUserById(this.uid);
-    //try use subscribe
-    // this.fruitTreeService.getUserById(this.uid).subscribe(dataLastEmittedFromObserver => {
-    // this.userToDisplay = new User (dataLastEmittedFromObserver.uid,dataLastEmittedFromObserver.email);
-    console.log("UserProfile: userToDisplay: "+ this.userToDisplay);
-  // })
+    this.database.database.ref("users").orderByChild("uid").equalTo(this.uid).on("child_added",(snapshot) => {
+     this.homies = snapshot.key;
+  })
 }
 }
-
-// export class User {
-//   public uid: string;
-//   public myTrees: Tree[];
-//   public favoriteTrees: Tree[];
-//   constructor (public email: string) { }
-// }

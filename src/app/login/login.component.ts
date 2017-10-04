@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   unsubscribe : any;
   unsubscribeNew : any ;
+  signedIn : boolean = false;
 
   constructor(private router: Router, private fruitTreeService: FruitTreeService, private auth: AngularFireAuth) { }
 
@@ -42,6 +43,8 @@ export class LoginComponent implements OnInit {
         console.log("**Adding to database "+user.email+" "+user.uid);
         var newUser = new User(user.uid,user.email);
         this.fruitTreeService.addUser(newUser);
+        this.signedIn = true;
+
         //now switchto user page
         this.router.navigate(['users',user.uid]);
       } else {
@@ -64,6 +67,7 @@ export class LoginComponent implements OnInit {
       if (user) {
         // User is signed in.
         console.log("Existing user signed in "+user.email);
+        this.signedIn = true;
         this.router.navigate(['users',user.uid]);
       } else {
         // No user is signed in.
@@ -77,6 +81,7 @@ export class LoginComponent implements OnInit {
     console.log("Logging out currentUser : ");
     this.auth.auth.signOut();
     console.log("remove listeners : ");
+    this.signedIn = false;
     // this.unsubscribe is not a function
     //this.unsubscribe();
     //this.unsubscribeNew();

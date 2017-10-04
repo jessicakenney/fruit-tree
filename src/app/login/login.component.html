@@ -1,8 +1,8 @@
-<div *ngIf="currentUser">
-    <h2>Welcome {{currentUser.email}} </h2>
-</div>
+
+<!-- <div *ngIf="signedIn"> -->
+    <h2>  Welcome </h2>
   <button (click)="submitLogout()">Logout</button>
-<!-- <div *ngIf="!currentUserId.email"> -->
+<!-- <div *ngIf="!signedIn"> -->
   <h2>Welcome </h2>
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -45,6 +45,7 @@
           <br>
           <input #password2>
         </div>
+          <br>
           <button (click)="submitLogin(email2.value,password2.value); email2.value=''; password2.value=''">Login</button>
       </div>
     </div>
