@@ -11,6 +11,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AppComponent {
   title = 'Fruit Forward';
   currentUser = this.auth.auth.currentUser;
+  lat: number = 45.519959;
+  lng: number = -122.677037
 
   //var user = this.auth.auth.currentUser;
   constructor(private auth: AngularFireAuth) {

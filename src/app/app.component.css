@@ -5,3 +5,7 @@
   font-weight: bold;
   font-size: 60px;
 }
+
+agm-map {
+  height: 300px;
+}

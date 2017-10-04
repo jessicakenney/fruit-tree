@@ -26,7 +26,12 @@
     <p>Welcome {{currentUser.email}}</p>
   </div>
 
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
 </div>
+
+
 <!-- <footer class="footer">
   <div class="container">
     <a class="text-muted" routerLink="login">Login</a>
