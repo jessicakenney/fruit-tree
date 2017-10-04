@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AlbumService } from './album.service';
+import { FruitTreeService } from './fruit-tree.service';
 
 describe('AlbumService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AlbumService]
+      providers: [FruitTreeService]
     });
   });
 
-  it('should ...', inject([AlbumService], (service: AlbumService) => {
+  it('should ...', inject([FruitTreeService], (service: FruitTreeService) => {
     expect(service).toBeTruthy();
   }));
 });

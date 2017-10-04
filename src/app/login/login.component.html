@@ -1,45 +1,51 @@
-<div *ngIf="currentUserId">
-    <h2>Welcome {{currentUser.username}} </h2>
-    <button (click)="submitLogout(currentUser)">Logout</button>
+<div *ngIf="currentUser">
+    <h2>Welcome {{currentUser.email}} </h2>
 </div>
-<div *ngIf="!currentUserId">
+  <button (click)="submitLogout()">Logout</button>
+<!-- <div *ngIf="!currentUserId.email"> -->
   <h2>Welcome </h2>
   <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Login</h3>
-    </div>
-    <div class="panel-body">
-  <div>
-    <div>
-      <label>UserName:</label>
-      <br>
-      <input #loginName>
-    </div>
-    <div>
-      <label>password:</label>
-      <br>
-      <input #password>
-    </div>
-    <button (click)="submitLoginForm(loginName.value, password.value); loginName.value=''; password.value=''">Enter</button>
-  </div>
-  </div>
-  </div>
-
-  <hr noshade>
-
-  <!-- <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Register New User</h3>
     </div>
     <div class="panel-body">
   <div>
     <div>
-      <label>UserName:</label>
+      <label>Email</label>
       <br>
-      <input #username>
+      <input #email>
     </div>
-    <button (click)="submitNewUserForm(username.value); username.value=''">Register</button>
+    <div>
+      <label>Password</label>
+      <br>
+      <input #password>
+    </div>
+      <br>
+    <button (click)="submitNewUser(email.value, password.value); email.value=''; password.value=''">Register</button>
   </div>
   </div>
-  </div> -->
-</div>
+  </div>
+
+
+  <hr noshade>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Existing Users</h3>
+    </div>
+    <div class="panel-body">
+      <div>
+        <div>
+          <label>Email</label>
+          <br>
+          <input #email2>
+        </div>
+        <div>
+          <label>Password</label>
+          <br>
+          <input #password2>
+        </div>
+          <button (click)="submitLogin(email2.value,password2.value); email2.value=''; password2.value=''">Login</button>
+      </div>
+    </div>
+  </div>

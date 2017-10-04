@@ -3,6 +3,7 @@ import { FruitTreeService } from '../fruit-tree.service';
 import { User } from '../user.model';
 import { Tree } from '../tree.model';
 import { FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-login',
@@ -12,68 +13,59 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
 })
 
 export class LoginComponent implements OnInit {
-  //currentUserId: FirebaseObjectObservable<any[]>;
-  currentUserId;
-  currentUser;
 
-  constructor(private fruitTreeService: FruitTreeService) { }
+  constructor(private fruitTreeService: FruitTreeService, private auth: AngularFireAuth) { }
 
   ngOnInit() {
   }
 
-  submitLoginForm(loginName: string, password: string) {
-    console.log("submit login form "+loginName);
-    this.currentUser = this.fruitTreeService.signIn(loginName,password);
-    // console.log("login userId "+this.currentUser);
+// New  User
+// Will need to create new user and add to DB
+    //var newUser: User = new User(username);
+    //this.fruitTreeService.addUser(newUser);
+  submitNewUser(email: string, password: string) {
+    //signout anyone first
+    if (this.auth.auth.currentUser){
+      this.auth.auth.signOut();
+    }
+    console.log("Submit new user login form "+email);
+    this.fruitTreeService.newSignIn(email,password);
+    console.log("New SignInsubmitted:");
+
+    this.auth.auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        console.log("user signed in "+user.email);
+      } else {
+        // No user is signed in.
+        console.log("no one signed in");
+      }
+    });
   }
 
-// New  User
-  // submitNewUserForm(username: string) {
-  //   // create new user and add to DB
-  //   var newUser: User = new User(username);
-  //   this.fruitTreeService.addUser(newUser);
-  //   console.log("Submit new userform "+username);
-  //   // add to session
-  //   this.currentUser = newUser;
-  //   //this.fruitTreeService.createNewSession(newUser);
-  // }
-  //
-  // submitLogout(username: string) {
-  //   console.log("Logging out"+username);
-  //   this.currentUser = '';
-  //   //need to have
-  //   this.fruitTreeService.logoutSession(username);
-  // }
+// login (already existing)
+  submitLogin(email: string, password: string) {
 
+    if (this.auth.auth.currentUser){
+      this.auth.auth.signOut();
+    }
+    console.log("Submit login form "+email);
+    this.fruitTreeService.signIn(email,password);
+    console.log("signIn submitted:");
+    this.auth.auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        console.log("user signed in "+user.email);
+      } else {
+        // No user is signed in.
+        console.log("no one signed in");
+      }
+    });
 
+  }
+
+  submitLogout() {
+    console.log("Logging out currentUser : ");
+    this.auth.auth.signOut();
+  }
 }
-// //---------------------
-// @Component({
-//   selector: 'app-user-profile',
-//   templateUrl: './user-profile.component.html',
-//   styleUrls: ['./user-profile.component.css'],
-//   providers: [FruitTreeService]
-// })
-//
-// export class UserProfileComponent  implements OnInit {
-//   currentUser;
-//
-//   constructor(private route: ActivatedRoute,
-//               private fruitTreeService: FruitTreeService) {
-//   }
-//
-//   // use subscribe
-//   ngOnInit() {
-//     this.route.params.forEach((urlParameters) => {
-//       // this.userId = urlParameters['id'];
-//     });
-//     this.currentUser = this.fruitTreeService.getCurrentUser();
-//     console.log ("IN USER PROFILE "+this.currentUser);
-//     // this.fruitTreeService.getUserById(this.albumId).subscribe(dataLastEmittedFromObserver => {
-//     // this.userToDisplay = new Album(dataLastEmittedFromObserver.title,
-//     //                                   dataLastEmittedFromObserver.artist,
-//     //                                   dataLastEmittedFromObserver.description)
-//   // })
-//   }
-//
-// }

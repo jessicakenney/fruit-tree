@@ -59,31 +59,34 @@ export class FruitTreeService {
     })
   }
 
-  signIn(email, password){
+  newSignIn(email, password){
     this.auth.auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-      console.log("Problems...but keep smiling:)")
-      // Handle Errors here.
+      //put in some alerts here or something
       // var errorCode = error.code;
-      // var errorMessage = error.message;
-      // ...
-      });
-      var user = this.auth.auth.currentUser;
-      if (user) {
-        for (let key in user ){
-          console.log("user "+key);
-        }
-        console.log ("YES "+ user.uid + " name "+ user.email);
-      } else {
-        console.log ("NO");
-      }
+      var errorMessage = error.message;
+      // [START_EXCLUDE]
+      // if (errorCode === 'auth/wrong-password') {
+      //   alert('Wrong password.');
+      // } else {
+      //   alert(errorMessage);
+      // }
+      alert(errorMessage);
+      console.log(error);
+      console.log("newSignIn: Problems with your email or password...but keep smiling:)")
+    });
   }
 
-  //  getUserByNamePromise(name: string) {
-  //   return this.database.database.ref("users").orderByChild('username').equalTo(name).once('value').then(function(snapshot) {
-  //     console.log ("snapshot : "+ snapshot.key);
-  //     return snapshot.val();
-  //   });
-  // }
+  signIn(email,password){
+    this.auth.auth.signInWithEmailAndPassword(email,password).catch(function(error) {
+      // Handle Errors here.
+      //not finding code  var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+      console.log(error);
+      });
+  }
+
+
 
  //
  // addAlbumToCart(newCartAlbum: Album) {

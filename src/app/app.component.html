@@ -4,6 +4,7 @@
       <a class="navbar-brand" routerLink="">Fruit Tree Home</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
+      <li><a routerLink="login">Login</a></li>
       <li><a routerLink="about">About</a></li>
       <li><a routerLink="orchard">Orchard</a></li>
       <li><a routerLink="user-profile">Profile</a></li>
@@ -18,45 +19,13 @@
    <!-- <app-user-profile [currentUser]="currentUser"></app-user-profile> -->
 
 
-  <!-- <div class="login" *ngIf="!currentUser">
-    <h2> Hello! Login or Register here!</h2>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Login</h3>
-      </div>
-      <div class="panel-body">
-    <div>
-      <div>
-        <label>UserName:</label>
-        <br>
-        <input #loginname>
-      </div>
-      <button (click)="submitLoginForm(loginname.value); loginname.value=''">Enter</button>
-    </div>
-    </div>
-    </div>
+  <div class="login" *ngIf="currentUser">
+    <p>Welcome {{currentUser.email}}</p>
+  </div>
 
-    <hr noshade>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Register New User</h3>
-      </div>
-      <div class="panel-body">
-    <div>
-      <div>
-        <label>UserName:</label>
-        <br>
-        <input #username>
-      </div>
-      <button (click)="submitNewUserForm(username.value); username.value=''">Register</button>
-    </div>
-    </div>
-    </div>
-  </div> ---> 
 </div>
-<footer class="footer">
+<!-- <footer class="footer">
   <div class="container">
     <a class="text-muted" routerLink="login">Login</a>
   </div>
-</footer>
+</footer> -->
