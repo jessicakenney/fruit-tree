@@ -4,6 +4,7 @@ import { User } from '../user.model';
 import { Tree } from '../tree.model';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class LoginComponent implements OnInit {
 
-  constructor(private fruitTreeService: FruitTreeService, private auth: AngularFireAuth) { }
+  constructor(private router: Router, private fruitTreeService: FruitTreeService, private auth: AngularFireAuth) { }
 
   ngOnInit() {
   }
@@ -52,10 +53,11 @@ export class LoginComponent implements OnInit {
     console.log("Submit login form "+email);
     this.fruitTreeService.signIn(email,password);
     console.log("signIn submitted:");
-    this.auth.auth.onAuthStateChanged(function(user) {
+    this.auth.auth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
         console.log("user signed in "+user.email);
+        this.router.navigate(['users',user.uid]);
       } else {
         // No user is signed in.
         console.log("no one signed in");

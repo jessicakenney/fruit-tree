@@ -1,3 +1,4 @@
-<p>
-  user-profile: CurrentUser: {{currentUser.username}}
-</p>
+<p> You've made it to user-profile: Good Job :) </p>
+ <div *ngIf="userToDisplay">
+  <h3> {{(userToDisplay).email}} </h3>
+</div>

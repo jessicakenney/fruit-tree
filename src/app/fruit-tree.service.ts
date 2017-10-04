@@ -15,31 +15,20 @@ export class FruitTreeService {
   }
 
   addUser(newUser: User) {
-    //perry
-    //write the record
-    //get the reference to the top node "users"
-    //find the record you just wrote's key
-    //update the local object with they key as the id property
-    //update the object in the database
-    //now any time we retrieve the object, we can ignore the node. id is now property of object for forever.
-
+  //perry
+  //write the record
+  //get the reference to the top node "users"
+  //find the record you just wrote's key
+  //update the local object with they key as the id property
+  //update the object in the database
+  //now any time we retrieve the object, we can ignore the node. id is now property of object for forever.
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
    var newPostKey = this.database.database.ref().child('users').push().key;
    console.log("newUser Key "+newPostKey);
 
-   var updateUid = {};
-   updateUid ['/users/' + newPostKey] = { username : newUser.username, uid : newPostKey};
-   this.database.database.ref().update(updateUid).then(_ => console.log("FB update"))
-  }
-
-  createNewSession(userId: string) {
-    console.log("Service:createNewSession "+userId);
-    this.currentUser.set(userId).then(_ => console.log("FB set currentUserId"));
-  }
-
-  logoutSession(username) {
-    console.log("Service:logging out "+username);
-    this.currentUser.remove().then(_ => console.log("FB removed currentUser"));
+   //var updateUid = {};
+   //updateUid ['/users/' + newPostKey] = { email : newUser.email, uid : newPostKey};
+   //this.database.database.ref().update(updateUid).then(_ => console.log("FB update"))
   }
 
   getCurrentUser() {
@@ -50,14 +39,14 @@ export class FruitTreeService {
     return this.database.object('/users/' + userId);
   }
 
-  getUserByName(name: string){
-    let queryRef;
-    queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name).once('value', function(snapshot) {
-      console.log(snapshot.val());
-      console.log("snapshot uid" + snapshot.val().uid);
-      return  snapshot.val() ;
-    })
-  }
+  // getUserByName(name: string){
+  //   let queryRef;
+  //   queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name).once('value', function(snapshot) {
+  //     console.log(snapshot.val());
+  //     console.log("snapshot uid" + snapshot.val().uid);
+  //     return  snapshot.val() ;
+  //   })
+  // }
 
   newSignIn(email, password){
     this.auth.auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -85,7 +74,6 @@ export class FruitTreeService {
       console.log(error);
       });
   }
-
 
 
  //

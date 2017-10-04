@@ -15,23 +15,30 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
 })
 
 export class UserProfileComponent  implements OnInit {
-  currentUser;
+  uid: string = null;
+  userToDisplay;
 
   constructor(private route: ActivatedRoute,
-              private fruitTreeService: FruitTreeService) {
+              private fruitTreeService: FruitTreeService, private location: Location) {
   }
 
   // use subscribe
-  ngOnInit() {}
-    // this.route.params.forEach((urlParameters) => {
-    //   // this.userId = urlParameters['id'];
-    // });
-  //   this.currentUser = this.fruitTreeService.getCurrentUser();
-  //   console.log ("IN USER PROFILE "+this.currentUser);
-  //   this.fruitTreeService.getCurrentUser().subscribe(dataLastEmittedFromObserver => {
-  //    this.currentUser = new Album(dataLastEmittedFromObserver.title,
-  //                                      dataLastEmittedFromObserver.artist,
-  //                                      dataLastEmittedFromObserver.description)
-  //  })
-  // }
+  ngOnInit() {
+    this.route.params.forEach((urlParameters) => {
+       this.uid = urlParameters['uid'];
+    });
+    //this.userToDisplay = this.fruitTreeService.getUserById(this.uid);
+    //try use subscribe
+    this.fruitTreeService.getUserById(this.uid).subscribe(dataLastEmittedFromObserver => {
+    this.userToDisplay = new User (dataLastEmittedFromObserver.email);
+    console.log(this.userToDisplay);
+  })
 }
+}
+
+// export class User {
+//   public uid: string;
+//   public myTrees: Tree[];
+//   public favoriteTrees: Tree[];
+//   constructor (public email: string) { }
+// }
