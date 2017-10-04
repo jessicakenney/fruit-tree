@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 
@@ -8,10 +9,9 @@ export class FruitTreeService {
   users: FirebaseListObservable<any[]>;
   currentUser: FirebaseObjectObservable<any[]>;
 
-  constructor(private database: AngularFireDatabase) {
+  constructor(private database: AngularFireDatabase, private auth: AngularFireAuth) {
     this.users = database.list('users');
     this.currentUser = database.object('currentUser');
-
   }
 
   addUser(newUser: User) {
@@ -25,10 +25,11 @@ export class FruitTreeService {
 
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
    var newPostKey = this.database.database.ref().child('users').push().key;
+   console.log("newUser Key "+newPostKey);
 
    var updateUid = {};
    updateUid ['/users/' + newPostKey] = { username : newUser.username, uid : newPostKey};
-   this.database.database.ref().update(updateUid)
+   this.database.database.ref().update(updateUid).then(_ => console.log("FB update"))
   }
 
   createNewSession(userId: string) {
@@ -50,13 +51,31 @@ export class FruitTreeService {
   }
 
   getUserByName(name: string){
-    var queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name).on("child_added",function(snapshot) {
-      console.log ("snapshot:" + snapshot.key);
-      // console.log(snapshot.val().username);
-      //this.createNewSession(snapshot.key);
-   });
-   return "bob";
+    let queryRef;
+    queryRef = this.database.database.ref("users").orderByChild("username").equalTo(name).once('value', function(snapshot) {
+      console.log(snapshot.val());
+      console.log("snapshot uid" + snapshot.val().uid);
+      return  snapshot.val() ;
+    })
+  }
 
+  signIn(email, password){
+    this.auth.auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+      console.log("Problems...but keep smiling:)")
+      // Handle Errors here.
+      // var errorCode = error.code;
+      // var errorMessage = error.message;
+      // ...
+      });
+      var user = this.auth.auth.currentUser;
+      if (user) {
+        for (let key in user ){
+          console.log("user "+key);
+        }
+        console.log ("YES "+ user.uid + " name "+ user.email);
+      } else {
+        console.log ("NO");
+      }
   }
 
   //  getUserByNamePromise(name: string) {
@@ -65,7 +84,6 @@ export class FruitTreeService {
   //     return snapshot.val();
   //   });
   // }
-
 
  //
  // addAlbumToCart(newCartAlbum: Album) {

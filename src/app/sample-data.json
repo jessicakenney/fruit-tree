@@ -1,4 +1,13 @@
 { "users": [{
     "username": "happytreeowner"
+}],
+ "trees": [{
+    "type": "Young Tree",
+    "species": "Fig Tree",
+    "street": "123 Downtown Ln.",
+    "zip": "12345",
+    "notes": "Please proceed respectfully",
+    "image": "",
+    "ownerUsername": ""
   }]
 }

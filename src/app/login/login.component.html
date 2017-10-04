@@ -13,16 +13,21 @@
     <div>
       <label>UserName:</label>
       <br>
-      <input #loginname>
+      <input #loginName>
     </div>
-    <button (click)="submitLoginForm(loginname.value); loginname.value=''">Enter</button>
+    <div>
+      <label>password:</label>
+      <br>
+      <input #password>
+    </div>
+    <button (click)="submitLoginForm(loginName.value, password.value); loginName.value=''; password.value=''">Enter</button>
   </div>
   </div>
   </div>
 
   <hr noshade>
 
-  <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Register New User</h3>
     </div>
@@ -36,5 +41,5 @@
     <button (click)="submitNewUserForm(username.value); username.value=''">Register</button>
   </div>
   </div>
-  </div>
+  </div> -->
 </div>
