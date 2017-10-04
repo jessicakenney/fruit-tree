@@ -13,6 +13,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
+import { NewTreeComponent } from './new-tree/new-tree.component';
+import { AllTreesComponent } from './all-trees/all-trees.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -27,7 +29,9 @@ export const firebaseConfig = {
     WelcomeComponent,
     AboutComponent,
     UserProfileComponent,
-    LoginComponent
+    LoginComponent,
+    NewTreeComponent,
+    AllTreesComponent
   ],
   imports: [
     BrowserModule,

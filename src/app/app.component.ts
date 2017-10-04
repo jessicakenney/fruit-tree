@@ -9,7 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 
 export class AppComponent {
-  title = 'Share the Harvest';
+  title = 'Fruit Forward';
   currentUser = this.auth.auth.currentUser;
 
   //var user = this.auth.auth.currentUser;

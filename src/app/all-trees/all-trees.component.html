@@ -1,0 +1,13 @@
+<hr noshade>
+<h3>All Trees</h3>
+
+<div *ngFor="let tree of trees | async" class="panel panel-default">
+  <div class="panel-body">
+      <li><b>{{tree.species}}</b></li>
+      <li>{{tree.type}}</li>
+      <li>{{tree.ownerUsername}}</li>
+      <li>{{tree.street}}, {{tree.zip}}</li>
+      <li>{{tree.image}}</li>
+      <li>{{tree.notes}}</li>
+  </div>
+</div>
