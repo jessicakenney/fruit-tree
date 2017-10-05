@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 .panel-heading {
-  background-color: #80c669;
+  background-color: #8BB08F;
   font-family: Poppins;
   font-size: 45px;
 }
@@ -11,12 +11,12 @@
 }
 
 label {
-  color: #478433;
+  color: #5F6656;
   font-size: 15px;
 }
 
 h2 {
-  color: #478433;
+  color: #8BB08F;
   font-size: 30px;
   font-family: Poppins;
   text-align: center;
