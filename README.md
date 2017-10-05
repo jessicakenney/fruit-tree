@@ -1,6 +1,6 @@
 
 # Fruit Forward
-▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍊
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲
 ![Alt text](src/public/img/tinyplum.png)
 
 #### Fruit Forward, October 5, 2017
@@ -68,7 +68,7 @@ export const masterGoogleMapsKey = {
 
 
 ## Known Bugs 🐞
-▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍍 
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍊 
 _Bugs coming here soon~_
 
 
