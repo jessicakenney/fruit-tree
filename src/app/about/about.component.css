@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 .panel {
   width: 80%;
   padding: 20px 15px 15px 10px;
 }
-
 
 .lemon{
   shape-outside: circle(50%);
@@ -11,9 +12,12 @@
   float: left;
 }
 
+.textTime{
+  font-family: 'Raleway', sans-serif;
+}
 
 h1 {
-  color: #478433;
+  color: #6e7743;
   font-size: 30px;
   font-family: Poppins;
   text-align: center;

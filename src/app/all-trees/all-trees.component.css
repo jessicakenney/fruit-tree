@@ -6,11 +6,10 @@
 
 agm-map {
   height: 500px;
-
 }
 
 .well {
-  background-color: #a1c681;
+  background-color: #8BB08F;
   width: 100%;
 }
 
@@ -18,17 +17,17 @@ h1 {
   font-size: 35px;
   font-family: Poppins;
   text-align: center;
-  color: green;
+  color: #8BB08F;
 }
 
 b {
   font-size: 20px;
   font-family: Poppins;
-  color: green;
+  color: #8BB08F;
 }
 
 li {
   font-size: 15px;
   font-family: Poppins;
-  color: green;
+  color: #8BB08F;
 }
