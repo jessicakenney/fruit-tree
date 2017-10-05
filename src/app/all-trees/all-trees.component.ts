@@ -28,8 +28,9 @@ export class AllTreesComponent implements OnInit {
   }
 
   likeTree(tree) {
-    // tree.numLikes += 1;
-    // console.log("Likes for "+tree.type+" "+tree.numLikes);
+    console.log("likeTree : "+tree.type);
+    tree.numLikes += 1;
+    console.log("Likes for "+tree.type+" "+tree.numLikes);
   }
 
 }
