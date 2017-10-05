@@ -1,11 +1,5 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- <div class="navbar-header">
-      <a class="navbar-brand" routerLink="">
-        <div class="titleTime">
-          Fruit Forward</div></a>
-    </div> -->
-    <!-- <img src="/src/public/img/cherrytree.png" height="60" width="60"> -->
     <ul class="nav navbar-nav navbar-right">
         <li (click)="submitLogout()">Logout</li>
         <li><a routerLink="new-tree">Add a Tree</a></li>
@@ -15,4 +9,14 @@
 
  <div *ngIf="userToDisplay">
   <p> <em> Hi {{(userToDisplay | async).email}} </em></p>
+</div>
+
+<div *ngFor="let tree of myTrees | async" class ="panel panel-default">
+  <div class="panel-body">
+    <h3 (click)="doSomethingAwesome(tree)">{{tree.type}} <em> by {{tree.species}} </em></h3>
+    <!-- <div *ngIf="currentRoute === '/admin'">
+      <h3>{{album.description}}</h3>
+      <hr>
+      <app-edit-album [selectedAlbum] = "album" > </app-edit-album> -->
+  </div>
 </div>

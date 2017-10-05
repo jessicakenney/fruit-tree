@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Tree } from '../tree.model';
 import { User } from '../user.model';
 import { FruitTreeService } from '../fruit-tree.service';
-import { FirebaseObjectObservable } from 'angularfire2/database';
+import { FirebaseObjectObservable,FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
@@ -20,21 +20,42 @@ export class UserProfileComponent  implements OnInit {
   uid: string = null;
   userKey: string;
   userToDisplay : FirebaseObjectObservable<any[]>;
+  //myTrees : FirebaseListObservable<any[]>;
+  myTrees : Tree[];
 
   constructor(private route: ActivatedRoute,
               private fruitTreeService: FruitTreeService, private location: Location, private database: AngularFireDatabase,private auth: AngularFireAuth, private router: Router) {
   }
 
-  // use subscribe ?
   ngOnInit() {
+    //Grab user id from URL
     this.route.params.forEach((urlParameters) => {
        this.uid = urlParameters['uid'];
     });
+    //from uid -> key -> User
     this.database.database.ref("users").orderByChild("uid").equalTo(this.uid).on("child_added",(snapshot) => {
-    this.userKey = snapshot.key;
-    this.userToDisplay = this.fruitTreeService.getUserByKey(this.userKey);
-  })
- }
+      this.userKey = snapshot.key;
+      this.userToDisplay = this.fruitTreeService.getUserByKey(this.userKey);
+    })
+
+    //to get the user's trees, do a search in the trees with this.uid
+    let trees = [];
+    let ref = this.database.database.ref("trees").orderByChild("userId").equalTo(this.uid);
+    ref.once("value",(snapshot) => {
+           snapshot.forEach((item) => {
+               var itemVal = item.val();
+               console.log("Test "+itemVal.type);
+               trees.push(itemVal);
+               //this is to fix some typescript compiler bug while
+               //foreach loop with snapshot
+               return false;
+           });
+          console.log("trees by user "+ trees[0].type);
+          // for (let i=0; i < trees.length; i++) {
+          //   this.myTrees.push(trees[i]);
+          // }
+    })
+  }
 
  submitLogout() {
    console.log("Logging out currentUser : ");

@@ -5,6 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class TreeService {
   trees: FirebaseListObservable<any[]>;
+  users: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
     this.trees = database.list('trees');
@@ -16,5 +17,7 @@ export class TreeService {
 
     addTree(newTree: Tree) {
       this.trees.push(newTree);
+      //also add Tree to User myTrees
     }
+
   }
