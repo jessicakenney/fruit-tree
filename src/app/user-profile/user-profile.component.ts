@@ -20,8 +20,8 @@ export class UserProfileComponent  implements OnInit {
   uid: string = null;
   userKey: string;
   userToDisplay : FirebaseObjectObservable<any[]>;
-  //myTrees : FirebaseListObservable<any[]>;
-  myTrees : Tree[];
+  myTrees : FirebaseListObservable<any[]>;
+  // myTrees = [];
 
   constructor(private route: ActivatedRoute,
               private fruitTreeService: FruitTreeService, private location: Location, private database: AngularFireDatabase,private auth: AngularFireAuth, private router: Router) {
@@ -54,7 +54,9 @@ export class UserProfileComponent  implements OnInit {
           // for (let i=0; i < trees.length; i++) {
           //   this.myTrees.push(trees[i]);
           // }
+          this.setTrees(trees);
     })
+
   }
 
  submitLogout() {
@@ -62,6 +64,11 @@ export class UserProfileComponent  implements OnInit {
    this.auth.auth.signOut();
    //redirect to home page?
    this.router.navigate(['']);
+ }
+
+ setTrees(treeList){
+   this.myTrees = treeList;
+   console.log("Outside: trees by user "+ this.myTrees[0].type);
  }
 
 }

@@ -11,7 +11,7 @@
   <p> <em> Hi {{(userToDisplay | async).email}} </em></p>
 </div>
 
-<div *ngFor="let tree of myTrees | async" class ="panel panel-default">
+<div *ngFor="let tree of myTrees" class ="panel panel-default">
   <div class="panel-body">
     <h3 (click)="doSomethingAwesome(tree)">{{tree.type}} <em> by {{tree.species}} </em></h3>
     <!-- <div *ngIf="currentRoute === '/admin'">
