@@ -21,7 +21,6 @@ export class UserProfileComponent  implements OnInit {
   userKey: string;
   userToDisplay : FirebaseObjectObservable<any[]>;
   myTrees : FirebaseListObservable<any[]>;
-  // myTrees = [];
 
   constructor(private route: ActivatedRoute,
               private fruitTreeService: FruitTreeService, private location: Location, private database: AngularFireDatabase,private auth: AngularFireAuth, private router: Router) {
@@ -50,10 +49,7 @@ export class UserProfileComponent  implements OnInit {
                //foreach loop with snapshot
                return false;
            });
-          console.log("trees by user "+ trees[0].type);
-          // for (let i=0; i < trees.length; i++) {
-          //   this.myTrees.push(trees[i]);
-          // }
+          // console.log("trees by user "+ trees[0].type);
           this.setTrees(trees);
     })
 
@@ -68,7 +64,6 @@ export class UserProfileComponent  implements OnInit {
 
  setTrees(treeList){
    this.myTrees = treeList;
-   console.log("Outside: trees by user "+ this.myTrees[0].type);
  }
 
 }

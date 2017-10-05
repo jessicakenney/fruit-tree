@@ -27,4 +27,10 @@ export class AllTreesComponent implements OnInit {
     this.treeService.getTreeCoordinates(this.treeCoordinates);
   }
 
+  likeTree(tree) {
+    console.log("likeTree : "+tree.type);
+    tree.numLikes += 1;
+    console.log("Likes for "+tree.type+" "+tree.numLikes);
+  }
+
 }

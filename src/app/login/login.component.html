@@ -33,12 +33,12 @@
         <div>
           <label>Email</label>
           <br>
-          <input #email2>
+          <input #email2 value="banjo@gmail.com">
         </div>
         <div>
           <label>Password</label>
           <br>
-          <input #password2>
+          <input #password2 value="justkeepswimming">
         </div>
           <br>
           <button (click)="submitLogin(email2.value,password2.value); email2.value=''; password2.value=''">Login</button>

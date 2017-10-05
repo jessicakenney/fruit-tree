@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
   title = 'Fruit Forward';
+  uid;
 
   // currentUser = this.auth.auth.currentUser;
   lat: number = 45.519959;
@@ -24,7 +25,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log("currentRoute "+this.currentRoute);
+    this.uid = window.sessionStorage.getItem('userId');
+    console.log("userId "+this.uid);
   }
 
 
