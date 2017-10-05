@@ -1,28 +1,75 @@
-# FruitTreeProject 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+# Fruit Forward
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍊
+![Alt text](public/img/tinyplum.png)
 
-## Development server
+#### Fruit Forward, October 5, 2017
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍋
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Alt text](public/img/header.png)
 
-## Code scaffolding
+#### By `Kira`, `Kate`, `Jessica`, and `David`
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Description
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍐
 
-## Build
+_Help with local food waste and find a tasty treat! Fruit Forward for searching and adding your fruit trees, with this app you can search for trees with extra fruit in the East Portland Neighborhood~ ▲ ._
+_Made by the Stellar four-person team Kira, Kate, Jessica and David._
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Setup/Installation Requirements
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍒
 
-## Running unit tests
+You will need npm, Typescript, Angular and Bower installed on your device.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* ->▲ Clone the repo from git hub.
+* ->▲ Add back in api-keys.ts in the src/app folder. (notation below)
+* ->▲ Run with -> npm install  -> bower install -> ng serve
 
-## Running end-to-end tests
+api-keys.ts
+```
+export var masterFirebaseConfig = {
+    apiKey: "AIzaSyD3BbqQ8qjp7mnfhkjJZbjMJz-Um7pubm8",
+    authDomain: "sheridan-33ce9.firebaseapp.com",
+    databaseURL: "https://sheridan-33ce9.firebaseio.com",
+    storageBucket: "sheridan-33ce9.appspot.com",
+    messagingSenderId: "77189366850"
+};
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+export const masterGoogleMapsKey = {
+  apiKey: "AIzaSyBB3xIuhMnWiZQ7n6SJ9wf8N_ZQdqZo10A"
+};
+```
 
-## Further help
+## Specifications
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍎
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+| 🍌 Behavior      | 🍌 Example Input      | 🍌 Example Output       |
+| ------------- | ------------- | ------------- |
+|Login | "User: 123@email.com" "Password: justkeepswimming"| Registered as a user on the website.|
+| ------------- | ------------- | ------------- |
+|Add a Tree| "Almond Tree" | Almond Tree is added to the list of all trees.|
+| ------------- | ------------- | ------------- |
+|Click an Entry on the map | "Tree Owner Name is Displayed"| ""|
+| ------------- | ------------- | ------------- |
+
+![Alt text](public/img/addtree.png)
+![Alt text](public/img/map.png)
+## Technologies Used
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍑
+
+* _Atom_
+* _JavaScript_
+* _npm_
+* _Jasmine_
+* _Karma_
+* _Bower_
+* _Gulp_
+
+### License
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍏
+Copyright &copy; 2017 _Kira, Kate, Jessica, David_
+[Kira](https://github.com/kizxm)
+[Kate](https://github.com/katebyars)
+[Jessica](https://github.com/jessicakenney)
+[David](https://github.com/dcuthell)
