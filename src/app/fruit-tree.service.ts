@@ -7,7 +7,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class FruitTreeService {
   users: FirebaseListObservable<any[]>;
-  user = "";
 
   constructor(private database: AngularFireDatabase, private auth: AngularFireAuth) {
     this.users = database.list('users');
@@ -17,7 +16,6 @@ export class FruitTreeService {
   addUser(newUser: User) {
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
   }
-
 
   getUserByKey(key: string){
     console.log("Service  >> looking for  user by key : "+key);

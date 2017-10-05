@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   unsubscribe : any;
   unsubscribeNew : any;
-  uid : FirebaseObjectObservable<any>;
+  // uid : FirebaseObjectObservable<any>;
 
   constructor(private router: Router, private fruitTreeService: FruitTreeService, private auth: AngularFireAuth) { }
 
