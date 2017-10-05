@@ -1,31 +1,25 @@
 <hr noshade>
-<h3>All Trees</h3>
-
-<p><em>Map will fit in here somehow</em></p>
-
-<div *ngFor="let tree of trees | async" class="panel panel-default">
-  <div class="panel-body">
-      <li><b>{{tree.type}}</b></li>
-      <li>{{tree.species}}</li>
-      <li>{{tree.street}}, {{tree.zip}}</li>
-      <li>{{tree.notes}}</li>
-      <li>{{tree.image}}</li>
-  </div>
+<h1>ALL TREES</h1>
+<div class="well green">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]= "zoomLevel">
+    <div *ngFor="let coord of treeCoordinates">
+      <agm-marker
+        [latitude] = coord[1]
+        [longitude]= coord[2]>
+        <agm-info-window>{{coord[0]}}</agm-info-window>
+      </agm-marker>
+    </div>
+  </agm-map>
 </div>
-<div *ngFor="let coord of treeCoordinates">
-  <div class="panel-body">
-      <li><b>{{coord[1]}}</b></li>
-      <li>{{coord[2]}}</li>
+<div class="container-fluid">
+  <h1>Tree Addresses</h1>
+  <div *ngFor="let tree of trees | async" class="panel panel-default">
+      <div class="panel-body">
+        <b>{{tree.type}}</b>
+        <li>{{tree.species}}</li>
+        <li>{{tree.street}}, {{tree.zip}}</li>
+        <li>{{tree.notes}}</li>
+        <li>{{tree.image}}</li>
+      </div>
+    </div>
   </div>
-</div>
-
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]= "zoomLevel">
-  <div *ngFor="let coord of treeCoordinates">
-    <agm-marker
-      [latitude] = coord[1]
-      [longitude]= coord[2]>
-      <agm-info-window>{{coord[0]}}</agm-info-window>
-    </agm-marker>
-  </div>
-
-</agm-map>

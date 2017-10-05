@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Reenie+Beanie');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 .titleTime{
-  font-family: 'Reenie Beanie', cursive;
+  font-family: Poppins;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 18px;
+  color: green;
+}
+
+.nav {
+  padding-right: 50px;
 }
