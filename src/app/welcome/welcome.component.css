@@ -1,17 +1,55 @@
 @import url('https://fonts.googleapis.com/css?family=Reenie+Beanie');
-
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+/*
 .titleTime{
   font-family: 'Reenie Beanie', cursive;
   font-weight: bold;
   font-size: 25px;
+}*/
+
+
+h1{
+  font-size:8em;
+  font-weight: 900;
+  text-shadow: .04em .04em 0 #898989;
+  z-index:1;
+}
+h1,h1:after {
+  font-family: 'Poppins', sans-serif;
+  color: rgba(0,0,0,.5);
+  text-align: center;
+  text-transform: uppercase;
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  color: #FFFFFF;
+  white-space: nowrap;
+  letter-spacing: .1em;
+  padding: .2em 0 .25em 0;
+}
+h1:after{
+  content: attr(data-text-shadow);
+  color: transparent;
+  text-shadow: none;
+  position: absolute;
+  left: .0875em;
+  top: .0875em;
+  z-index: -1;
+  background: linear-gradient(45deg, transparent 60%, white 25%, white 30%, transparent 70%, transparent 75%, white 75%, white);
+  background-size:3px 3px;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-h1 {
-  font-family: Reenie Beanie;
+p {
+  font-family: Poppins;
+  font-size: 40px;
+  color: white;
+  text-align: center;
 }
 
-body {
-  background-image: url("../../public/img/pie.jpg");
+.top {
+  background-image: url("../../public/img/pears.png");
   position: absolute;
   z-index: -1;
   top: 0;
