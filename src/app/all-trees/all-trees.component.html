@@ -11,3 +11,16 @@
       <li>{{tree.notes}}</li>
   </div>
 </div>
+<div *ngFor="let coord of treeCoordinates">
+  <div class="panel-body">
+      <li><b>{{coord[0]}}</b></li>
+      <li>coord[1]</li>
+  </div>
+</div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <div *ngFor="let coord of treeCoordinates">
+    <agm-marker [latitude]= coord[0] [longitude]= coord[1]></agm-marker>
+  </div>
+
+</agm-map>

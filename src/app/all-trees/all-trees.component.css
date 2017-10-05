@@ -1,3 +1,7 @@
 .panel {
   width: 550px;
 }
+
+agm-map {
+  height: 300px;
+}

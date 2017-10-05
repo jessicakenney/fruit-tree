@@ -5,7 +5,6 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class TreeService {
   trees: FirebaseListObservable<any[]>;
-  treeCoords = [];
 
   constructor(private database: AngularFireDatabase) {
     this.trees = database.list('trees');
@@ -21,7 +20,6 @@ export class TreeService {
 
   getTreeCoordinates(coordinateArray){
     let treeAddressQueries = [];
-    let treeCoordinates = [];
 
     this.trees.subscribe( (inputArray) =>{
       let output = [];
@@ -40,26 +38,43 @@ export class TreeService {
       //   pickles.push(e.street);
       // })
       // console.log(pickles);
+      console.log("Hi" + treeAddressQueries);
+
+
+
+      console.log(treeAddressQueries);
+      for(let i in treeAddressQueries){
+        console.log("Loading >>>> " + treeAddressQueries[i]);
+        this.getLatAndLng(treeAddressQueries[i], coordinateArray);
+      }
+
     });
 
-    console.log(treeAddressQueries);
-    let request = new XMLHttpRequest();
 
-    request.onreadystatechange = function(){
+
+
+
+  }
+
+  getLatAndLng( url, coordinateArray ){
+    let request = new XMLHttpRequest();
+    let output = [];
+
+    request.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
         let response = JSON.parse(this.responseText);
         let latitude = response.results[0].geometry.location.lat;
         let longitude = response.results[0].geometry.location.lng;
-        treeCoordinates.push([latitude, longitude]);
-        console.log(treeCoordinates);
-        // setLatLng(response);
+        output.push([latitude, longitude]);
+        coordinateArray.push([latitude, longitude]);
+        console.log(output);
       }
-    }
+    };
 
-    for(let url in treeAddressQueries){
-      request.open("GET", url, true);
-      request.send();
-    }
-
+    request.open("GET", url, true);
+    request.send();
   }
+
+
+
 }
