@@ -10,18 +10,21 @@ export class TreeService {
 
   constructor(private database: AngularFireDatabase) {
     this.trees = database.list('trees');
+    this.publicTrees = database.list('publicTrees');
   }
 
   getTrees(){
     return this.trees;
   }
 
+  getPublicTrees(){
+    return this.publicTrees;
+  }
+
   addTree(newTree: Tree) {
     this.trees.push(newTree);
     //also add Tree to User myTrees
   }
-
-
 
   getTreeCoordinates(coordinateArray){
     let treeAddressQueries = [];
@@ -41,11 +44,26 @@ export class TreeService {
       }
 
     });
+  }
 
+  getPublicTreeCoordinates(coordinateArray){
+    let treeAddressQueries = [];
 
+    this.publicTrees.subscribe( (inputArray) =>{
+      let output = [];
+      inputArray.forEach(function(tree) {
+        let street = tree.street;
+        let zip = tree.zip;
+        let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+street+' '+zip+'&key=AIzaSyBmEfAFGu4YQ0uBxjJDPRxa98w5RTCmkKg';
+        let type = tree.type
+        treeAddressQueries.push([type ,url]);
+      })
 
+      for(let i in treeAddressQueries){
+        this.getLatAndLng(treeAddressQueries[i][0], treeAddressQueries[i][1], coordinateArray);
+      }
 
-
+    });
   }
 
   getLatAndLng( type, url, coordinateArray ){
@@ -65,30 +83,30 @@ export class TreeService {
     request.open("GET", url, true);
     request.send();
   }
-
-  getPublicTrees(){
-    let pubTrees = [];
-    let ref = this.database.database.ref("trees").orderByChild("userId").equalTo("public");
-    ref.once("value",(snapshot) => {
-           snapshot.forEach((item) => {
-               let itemVal = item.val();
-               console.log("Test "+itemVal.type);
-               pubTrees.push(itemVal);
-               //this is to fix some typescript compiler bug while
-               //foreach loop with snapshot
-               return false;
-           });
-          console.log("trees by user "+ pubTrees[0].type);
-          // for (let i=0; i < trees.length; i++) {
-          //   this.myTrees.push(trees[i]);
-          // }
-    });
-    this.setPublicTrees(pubTrees);
-    return this.publicTrees;
-  }
-
-  setPublicTrees(treeList){
-    this.publicTrees = treeList;
-  }
+  //
+  // getPublicTrees(){
+  //   let pubTrees = [];
+  //   let ref = this.database.database.ref("trees").orderByChild("userId").equalTo("public");
+  //   ref.once("value",(snapshot) => {
+  //          snapshot.forEach((item) => {
+  //              let itemVal = item.val();
+  //              console.log("Test "+itemVal.type);
+  //              pubTrees.push(itemVal);
+  //              //this is to fix some typescript compiler bug while
+  //              //foreach loop with snapshot
+  //              return false;
+  //          });
+  //         console.log("trees by user "+ pubTrees[0].type);
+  //         // for (let i=0; i < trees.length; i++) {
+  //         //   this.myTrees.push(trees[i]);
+  //         // }
+  //   });
+  //   this.setPublicTrees(pubTrees);
+  //   return this.publicTrees;
+  // }
+  //
+  // setPublicTrees(treeList){
+  //   this.publicTrees = treeList;
+  // }
 
 }
