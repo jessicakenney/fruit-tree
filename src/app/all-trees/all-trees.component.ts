@@ -13,9 +13,12 @@ import { Tree } from '../tree.model';
 export class AllTreesComponent implements OnInit {
   trees: FirebaseListObservable<any[]>;
   treeCoordinates = [];
-  lat: number = 45.519959;
-  lng: number = -122.677037;
-  
+  lat: number = 45.5545304;
+  lng: number = -122.6374891;
+  zoomLevel: number = 14;
+  a: string = "A";
+  b: string = "b";
+
   constructor(private router: Router, private treeService: TreeService) { }
 
   ngOnInit() {

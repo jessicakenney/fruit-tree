@@ -7,6 +7,7 @@ export class TreeService {
   trees: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
+    console.log("inside you");
     this.trees = database.list('trees');
   }
 
@@ -27,25 +28,12 @@ export class TreeService {
         let street = tree.street;
         let zip = tree.zip;
         let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+street+' '+zip+'&key=AIzaSyBmEfAFGu4YQ0uBxjJDPRxa98w5RTCmkKg';
-        console.log(url);
-        treeAddressQueries.push(url);
+        let species = tree.species
+        treeAddressQueries.push([species ,url]);
       })
-    // console.log(inputArray.map(tree => tree.street));
 
-
-      // let pickles = [];
-      // inputArray.forEach(function(e) {
-      //   pickles.push(e.street);
-      // })
-      // console.log(pickles);
-      console.log("Hi" + treeAddressQueries);
-
-
-
-      console.log(treeAddressQueries);
       for(let i in treeAddressQueries){
-        console.log("Loading >>>> " + treeAddressQueries[i]);
-        this.getLatAndLng(treeAddressQueries[i], coordinateArray);
+        this.getLatAndLng(treeAddressQueries[i][0], treeAddressQueries[i][1], coordinateArray);
       }
 
     });
@@ -56,7 +44,7 @@ export class TreeService {
 
   }
 
-  getLatAndLng( url, coordinateArray ){
+  getLatAndLng( species, url, coordinateArray ){
     let request = new XMLHttpRequest();
     let output = [];
 
@@ -66,8 +54,7 @@ export class TreeService {
         let latitude = response.results[0].geometry.location.lat;
         let longitude = response.results[0].geometry.location.lng;
         output.push([latitude, longitude]);
-        coordinateArray.push([latitude, longitude]);
-        console.log(output);
+        coordinateArray.push([species, latitude, longitude]);
       }
     };
 

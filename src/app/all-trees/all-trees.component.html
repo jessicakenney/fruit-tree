@@ -13,14 +13,18 @@
 </div>
 <div *ngFor="let coord of treeCoordinates">
   <div class="panel-body">
-      <li><b>{{coord[0]}}</b></li>
-      <li>coord[1]</li>
+      <li><b>{{coord[1]}}</b></li>
+      <li>{{coord[2]}}</li>
   </div>
 </div>
 
-<agm-map [latitude]="lat" [longitude]="lng">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]= "zoomLevel">
   <div *ngFor="let coord of treeCoordinates">
-    <agm-marker [latitude]= coord[0] [longitude]= coord[1]></agm-marker>
+    <agm-marker
+      [latitude] = coord[1]
+      [longitude]= coord[2]>
+      <agm-info-window>{{coord[0]}}</agm-info-window>
+    </agm-marker>
   </div>
 
 </agm-map>
