@@ -31,8 +31,8 @@ export class TreeService {
         let street = tree.street;
         let zip = tree.zip;
         let url = 'https://maps.googleapis.com/maps/api/geocode/json?address='+street+' '+zip+'&key=AIzaSyBmEfAFGu4YQ0uBxjJDPRxa98w5RTCmkKg';
-        let species = tree.species
-        treeAddressQueries.push([species ,url]);
+        let type = tree.type
+        treeAddressQueries.push([type ,url]);
       })
 
       for(let i in treeAddressQueries){
@@ -47,7 +47,7 @@ export class TreeService {
 
   }
 
-  getLatAndLng( species, url, coordinateArray ){
+  getLatAndLng( type, url, coordinateArray ){
     let request = new XMLHttpRequest();
     let output = [];
 
@@ -57,7 +57,7 @@ export class TreeService {
         let latitude = response.results[0].geometry.location.lat;
         let longitude = response.results[0].geometry.location.lng;
         output.push([latitude, longitude]);
-        coordinateArray.push([species, latitude, longitude]);
+        coordinateArray.push([type, latitude, longitude]);
       }
     };
 
@@ -65,6 +65,24 @@ export class TreeService {
     request.send();
   }
 
-
+  getPublicTrees(){
+    let publicTrees: FirebaseListObservable<any[]>;
+    let ref = this.database.database.ref("trees").orderByChild("userId").equalTo("public");
+    ref.once("value",(snapshot) => {
+           snapshot.forEach((item) => {
+               var itemVal = item.val();
+               console.log("Test "+itemVal.type);
+               publicTrees.push(itemVal);
+               //this is to fix some typescript compiler bug while
+               //foreach loop with snapshot
+               return false;
+           });
+          console.log("trees by user "+ publicTrees[0].type);
+          // for (let i=0; i < trees.length; i++) {
+          //   this.myTrees.push(trees[i]);
+          // }
+    });
+    return publicTrees;
+  }
 
 }
