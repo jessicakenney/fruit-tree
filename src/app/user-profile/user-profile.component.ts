@@ -17,8 +17,8 @@ import { AngularFireDatabase  } from 'angularfire2/database';
 
 export class UserProfileComponent  implements OnInit {
   uid: string = null;
-  homies: string;
-  userToDisplay;
+  userKey: string;
+  userToDisplay : FirebaseObjectObservable<any[]>;
 
   constructor(private route: ActivatedRoute,
               private fruitTreeService: FruitTreeService, private location: Location,private database: AngularFireDatabase,) {
@@ -30,7 +30,8 @@ export class UserProfileComponent  implements OnInit {
        this.uid = urlParameters['uid'];
     });
     this.database.database.ref("users").orderByChild("uid").equalTo(this.uid).on("child_added",(snapshot) => {
-     this.homies = snapshot.key;
+    this.userKey = snapshot.key;
+    this.userToDisplay = this.fruitTreeService.getUserByKey(this.userKey);
   })
-}
+ }
 }

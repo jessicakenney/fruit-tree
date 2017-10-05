@@ -7,24 +7,24 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class FruitTreeService {
   users: FirebaseListObservable<any[]>;
-  currentUser: FirebaseObjectObservable<any[]>;
+  //currentUser: FirebaseObjectObservable<any[]>;
 
   constructor(private database: AngularFireDatabase, private auth: AngularFireAuth) {
     this.users = database.list('users');
-    this.currentUser = database.object('currentUser');
+  //  this.currentUser = database.object('currentUser');
   }
 
   addUser(newUser: User) {
    this.users.push(newUser).then(_ => console.log("FB pushed new user"));
   }
 
-  getCurrentUser() {
-    return this.currentUser;
-  }
+  // getCurrentUser() {
+  //   return this.currentUser;
+  // }
 
-  getUserById(userId: string){
-    console.log("Service  >> looking for  user : "+userId);
-    return this.database.object('users/' + userId);
+  getUserByKey(key: string){
+    console.log("Service  >> looking for  user by key : "+key);
+    return this.database.object('users/' + key);
   }
 
   // getUserByName(name: string){
