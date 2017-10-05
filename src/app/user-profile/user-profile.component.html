@@ -1,5 +1,18 @@
-<p> You've made it to user-profile: Good Job :) </p>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">
+        <div class="titleTime">
+          Fruit Forward</div></a>
+    </div> -->
+    <!-- <img src="/src/public/img/cherrytree.png" height="60" width="60"> -->
+    <ul class="nav navbar-nav navbar-right">
+        <li (click)="submitLogout()">Logout</li>
+        <li><a routerLink="new-tree">Add a Tree</a></li>
+    </ul>
+  </div>
+</nav>
+
  <div *ngIf="userToDisplay">
-  <h3> {{(userToDisplay | async).email}} </h3>
+  <p> <em> Hi {{(userToDisplay | async).email}} </em></p>
 </div>
-<h2>{{userKey}}</h2>

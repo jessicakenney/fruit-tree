@@ -6,7 +6,8 @@ import { User } from '../user.model';
 import { FruitTreeService } from '../fruit-tree.service';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { AngularFireDatabase  } from 'angularfire2/database';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,7 +22,7 @@ export class UserProfileComponent  implements OnInit {
   userToDisplay : FirebaseObjectObservable<any[]>;
 
   constructor(private route: ActivatedRoute,
-              private fruitTreeService: FruitTreeService, private location: Location,private database: AngularFireDatabase,) {
+              private fruitTreeService: FruitTreeService, private location: Location, private database: AngularFireDatabase,private auth: AngularFireAuth, private router: Router) {
   }
 
   // use subscribe ?
@@ -34,4 +35,12 @@ export class UserProfileComponent  implements OnInit {
     this.userToDisplay = this.fruitTreeService.getUserByKey(this.userKey);
   })
  }
+
+ submitLogout() {
+   console.log("Logging out currentUser : ");
+   this.auth.auth.signOut();
+   //redirect to home page?
+   this.router.navigate(['']);
+ }
+
 }
