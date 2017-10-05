@@ -78,9 +78,7 @@ export class LoginComponent implements OnInit {
 
   submitLogout() {
     sessionStorage.clear();
-    console.log("Logging out currentUser : ");
     this.auth.auth.signOut();
-    console.log("remove listeners : ");
     // this.unsubscribe is not a function
     //this.unsubscribe();
     //this.unsubscribeNew();
