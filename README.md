@@ -1,12 +1,12 @@
 
 # Fruit Forward
 ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍊
-![Alt text](public/img/tinyplum.png)
+![Alt text](src/public/img/tinyplum.png)
 
 #### Fruit Forward, October 5, 2017
 ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍋
 
-![Alt text](public/img/header.png)
+![Alt text](src/public/img/header.png)
 
 #### By `Kira`, `Kate`, `Jessica`, and `David`
 ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲
@@ -53,8 +53,8 @@ export const masterGoogleMapsKey = {
 |Click an Entry on the map | "Tree Owner Name is Displayed"| ""|
 | ------------- | ------------- | ------------- |
 
-![Alt text](public/img/addtree.png)
-![Alt text](public/img/map.png)
+![Alt text](src/public/img/addtree.png)
+![Alt text](src/public/img/map.png)
 ## Technologies Used
 ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍑
 
@@ -68,7 +68,9 @@ export const masterGoogleMapsKey = {
 
 ### License
 ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍏
+
 Copyright &copy; 2017 _Kira, Kate, Jessica, David_
+
 [Kira](https://github.com/kizxm)
 [Kate](https://github.com/katebyars)
 [Jessica](https://github.com/jessicakenney)
