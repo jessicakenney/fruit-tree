@@ -34,7 +34,7 @@ export class AllTreesComponent implements OnInit {
   }
 
   showPublicTrees(){
-    this.trees = this.treeService.getPublicTrees();
+    this.trees = null;
     this.treeService.getPublicTreeCoordinates(this.treeCoordinates);
   }
 
