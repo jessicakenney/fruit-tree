@@ -7,18 +7,16 @@
     </div>
     <img src="/src/public/img/cherrytree.png" height="60" width="60">
     <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a routerLink="login">Login</a></li> -->
         <li><a routerLink="about">About</a></li>
-        <!-- <li><a routerLink="new-tree">Add a Tree</a></li> -->
         <li><a routerLink="all-trees">Orchard</a></li>
-        <!-- <li><a routerLink="user-profile">Profile</a></li> -->
+        <li><a routerLink="/users/{{uid}}">My Account</a></li>
     </ul>
   </div>
 </nav>
 
-
 <div class="container">
-  <router-outlet></router-outlet>
+  <!-- <router-outlet>(clicksender)="sdsd" [clickin] =""</router-outlet> -->
+  <router-outlet> </router-outlet>
 
   <div class="login" *ngIf="currentUser">
     <p>Welcome {{currentUser.email}}</p>

@@ -10,6 +10,7 @@
       <li>{{tree.street}}, {{tree.zip}}</li>
       <li>{{tree.notes}}</li>
       <li>{{tree.image}}</li>
+      <button (click)="likeTree(tree)">like</button>
   </div>
 </div>
 <div *ngFor="let coord of treeCoordinates">
