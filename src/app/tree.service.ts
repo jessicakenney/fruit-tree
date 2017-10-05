@@ -7,7 +7,6 @@ export class TreeService {
   trees: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
-    console.log("inside you");
     this.trees = database.list('trees');
   }
 

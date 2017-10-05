@@ -18,6 +18,7 @@ import { NewTreeComponent } from './new-tree/new-tree.component';
 import { AllTreesComponent } from './all-trees/all-trees.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -50,7 +51,8 @@ export const googleMapsKey = {
     AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: googleMapsKey.apiKey
-    })
+    }),
+    AgmSnazzyInfoWindowModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,6 +18,7 @@ export class AllTreesComponent implements OnInit {
   zoomLevel: number = 14;
   a: string = "A";
   b: string = "b";
+  treeIcon: string = "https://cdn0.iconfinder.com/data/icons/green-tree-1/512/as433g_6-512.png";
 
   constructor(private router: Router, private treeService: TreeService) { }
 
