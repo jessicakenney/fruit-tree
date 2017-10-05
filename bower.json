@@ -2,10 +2,8 @@
   "name": "fruit-tree",
   "description": "",
   "main": "",
-  "authors": [
-  ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/jessicakenney/fruit-tree",
   "ignore": [
     "**/.*",
     "node_modules",
