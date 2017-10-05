@@ -5,6 +5,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 @Injectable()
 export class TreeService {
   trees: FirebaseListObservable<any[]>;
+  publicTrees: FirebaseListObservable<any[]>;
   users: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
@@ -66,23 +67,28 @@ export class TreeService {
   }
 
   getPublicTrees(){
-    let publicTrees: FirebaseListObservable<any[]>;
+    let pubTrees = [];
     let ref = this.database.database.ref("trees").orderByChild("userId").equalTo("public");
     ref.once("value",(snapshot) => {
            snapshot.forEach((item) => {
-               var itemVal = item.val();
+               let itemVal = item.val();
                console.log("Test "+itemVal.type);
-               publicTrees.push(itemVal);
+               pubTrees.push(itemVal);
                //this is to fix some typescript compiler bug while
                //foreach loop with snapshot
                return false;
            });
-          console.log("trees by user "+ publicTrees[0].type);
+          console.log("trees by user "+ pubTrees[0].type);
           // for (let i=0; i < trees.length; i++) {
           //   this.myTrees.push(trees[i]);
           // }
     });
-    return publicTrees;
+    this.setPublicTrees(pubTrees);
+    return this.publicTrees;
+  }
+
+  setPublicTrees(treeList){
+    this.publicTrees = treeList;
   }
 
 }
