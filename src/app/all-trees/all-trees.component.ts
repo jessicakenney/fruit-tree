@@ -33,4 +33,16 @@ export class AllTreesComponent implements OnInit {
     console.log("Likes for "+tree.type+" "+tree.numLikes);
   }
 
+  showPublicTrees(){
+    this.trees = null;
+    this.treeService.getPublicTreeCoordinates(this.treeCoordinates);
+  }
+
+  showUserTrees(){
+    this.trees = this.treeService.getTrees();
+    this.treeService.getTreeCoordinates(this.treeCoordinates);
+  }
+
+
+
 }
