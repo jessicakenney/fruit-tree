@@ -5,3 +5,18 @@
   font-weight: bold;
   font-size: 25px;
 }
+
+h1 {
+  font-family: Reenie Beanie;
+}
+
+body {
+  background-image: url("../../public/img/pie.jpg");
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
