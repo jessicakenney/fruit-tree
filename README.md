@@ -68,7 +68,8 @@ export const masterGoogleMapsKey = {
 
 
 ## Known Bugs 🐞
-▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍊 
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍊
+
 _Bugs coming here soon~_
 
 
