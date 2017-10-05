@@ -66,12 +66,21 @@ export const masterGoogleMapsKey = {
 * _Bower_
 * _Gulp_
 
+
+## Known Bugs 🐞
+▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍍 
+_Bugs coming here soon~_
+
+
 ### License
 ▲ ▲ ▲ ▲ ▲ ▲ ▲ ▲ 🍏
 
 Copyright &copy; 2017 _Kira, Kate, Jessica, David_
 
 [Kira](https://github.com/kizxm)
+
 [Kate](https://github.com/katebyars)
+
 [Jessica](https://github.com/jessicakenney)
+
 [David](https://github.com/dcuthell)
