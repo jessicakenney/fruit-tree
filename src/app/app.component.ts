@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,35 +12,20 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class AppComponent {
   title = 'Fruit Forward';
-  currentUser = this.auth.auth.currentUser;
-  lat: number = 45.519959;
-  lng: number = -122.677037
 
-  //var user = this.auth.auth.currentUser;
-  constructor(private auth: AngularFireAuth) {
+  // currentUser = this.auth.auth.currentUser;
+  lat: number = 45.519959;
+  lng: number = -122.677037;
+
+  currentRoute: string = this.router.url;
+
+
+  constructor(private router: Router, private auth: AngularFireAuth) {
   }
 
   ngOnInit() {
+    console.log("currentRoute "+this.currentRoute);
   }
 
 
 }
-
-
-
-
-
-// export class LoginComponent implements OnInit {
-//   //currentUserId: FirebaseObjectObservable<any[]>;
-//   currentUserId;
-//   currentUser;
-//
-//   constructor(private fruitTreeService: FruitTreeService) { }
-//
-//   ngOnInit() {
-//   }
-//
-//   submitNewUser(email: string, password: string) {
-//     console.log("Submit login form "+email);
-//     this.currentUser = this.fruitTreeService.newSignIn(email,password);
-//   }

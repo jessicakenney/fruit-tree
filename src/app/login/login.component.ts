@@ -23,9 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
 // New  User
-// Will need to create new user and add to DB
-    //var newUser: User = new User(username);
-    //this.fruitTreeService.addUser(newUser);
   submitNewUser(email: string, password: string) {
     //signout anyone first
     if (this.auth.auth.currentUser){
@@ -42,6 +39,7 @@ export class LoginComponent implements OnInit {
         console.log("**Adding to database "+user.email+" "+user.uid);
         var newUser = new User(user.uid,user.email);
         this.fruitTreeService.addUser(newUser);
+
         //now switchto user page
         this.router.navigate(['users',user.uid]);
       } else {
@@ -51,7 +49,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-// login (already existing)
+// Existing user login
   submitLogin(email: string, password: string) {
 
     if (this.auth.auth.currentUser){

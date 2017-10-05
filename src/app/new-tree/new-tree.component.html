@@ -1,6 +1,6 @@
 <hr noshade>
 <div class = "well">
-  <h3><b>Add a New Tree!</b></h3>
+  <h3><b>Add a New Tree</b></h3>
   <hr noshade>
 
   <label for="nType">What Type of Tree:</label>
@@ -40,7 +40,7 @@
     <div class="form-group">
     <label>Tree's Street Location:</label>
     <br>
-    <textarea #newStreet class="form-control"></textarea>
+    <input #newStreet class="form-control">
     </div>
 
     <label>Tree Zipcode:</label>
@@ -51,12 +51,9 @@
     <textarea #newNotes class="form-control"></textarea>
     <label>Tree Image:</label>
     <br>
-    <textarea #newImage class="form-control"></textarea>
-      <label>Tree's Owner:</label>
-      <br>
-      <input #newownerUsername class="form-control">
+    <input #newImage class="form-control">
     <br>
     <img src="/src/public/img/tinyapple.png" height="35px" width="30px">
-  <button class="btn btn-success" (click)="submitTreeForm(newType.value, newSpecies.value, newStreet.value, newZip.value, newNotes.value, newImage.value, newownerUsername.value); newType.value=''; newStreet.value=''; newZip.value=''; newNotes.value=''; newImage.value=''; newownerUsername.value=''">Add</button>
+  <button class="btn btn-success" (click)="submitTreeForm(newType.value, newSpecies.value, newStreet.value, newZip.value, newNotes.value, newImage.value); newType.value=''; newSpecies.value=''; newStreet.value=''; newZip.value=''; newNotes.value=''; newImage.value=''">Add</button>
 <img src="/src/public/img/tinyapple.png" height="35px" width="30px">
 </div>

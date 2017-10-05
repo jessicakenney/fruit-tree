@@ -1,14 +1,28 @@
 { "users": [{
-    "uid" : "12345",
-    "email": "happytreeowner"
+    "uid" : "jCxJKJbNULMpCSq3JMcvWUXTkyi1",
+    "email": "banjo@gmail.com"
+  },{
+    "uid" : "VStprc3TzmZy5PCcjDkfUumXh1H2",
+    "email": "jessica@yahoo.com"
+  },{
+    "uid" : "DTKOnf7uJKeCTmne8uFL29t7maI2",
+    "email": "daisy@yahoo.com"
 }],
  "trees": [{
-    "type": "Young Tree",
-    "species": "Fig Tree",
-    "street": "123 Downtown Ln.",
-    "zip": "12345",
-    "notes": "Please proceed respectfully",
+    "type": "Fig Tree",
+    "species": "Stella",
+    "street": "2717 NE Skidmore Street",
+    "zip": "97211",
+    "notes": "Front Parking Strip, Help yourself",
     "image": "",
-    "userId": ""
+    "userId": "jCxJKJbNULMpCSq3JMcvWUXTkyi1"
+  },{
+    "type": "Plum Tree",
+    "species": "Weeping Santa Rose",
+    "street": "2324 NE Mason Street",
+    "zip": "97211",
+    "notes": "barky dog, send me a quick note, lots to share, trade for cherries?",
+    "image": "",
+    "userId": "VStprc3TzmZy5PCcjDkfUumXh1H2"
   }]
 }

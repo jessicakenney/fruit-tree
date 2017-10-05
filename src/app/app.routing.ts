@@ -34,7 +34,7 @@ const appRoutes: Routes = [
     component: UserProfileComponent
 },
 {
-    path: 'new-tree',
+    path: 'users/:uid/new-tree',
     component: NewTreeComponent
   },
   {
